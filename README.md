@@ -21,4 +21,4 @@
 Question Categories\
 Comment on Questions/Answers\
 Polymorphic Up/Down Votes: Questions, Answers Comments\
-Code Snippets in Questions and Answers\
+Code Snippets in Questions and Answers
