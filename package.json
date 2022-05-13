@@ -1,0 +1,28 @@
+{
+  "name": "stack-overflow-clone",
+  "private": true,
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack",
+    "webpack": "webpack --watch --mode=development",
+    "postinstall": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haewon6640/Stack-Overflow-Clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haewon6640/Stack-Overflow-Clone/issues"
+  },
+  "homepage": "https://github.com/haewon6640/Stack-Overflow-Clone#readme"
+}
