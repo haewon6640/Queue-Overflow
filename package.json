@@ -23,7 +23,7 @@
   "license": "ISC",
   "engines": {
     "node": "16.14.0",
-    "npm": "8.5.0"
+    "npm": "8.3.1"
   },
   "bugs": {
     "url": "https://github.com/haewon6640/Stack-Overflow-Clone/issues"
