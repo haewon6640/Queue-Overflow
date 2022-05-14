@@ -21,6 +21,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "16.14.1",
+    "npm": "8.5.0"
+  },
   "bugs": {
     "url": "https://github.com/haewon6640/Stack-Overflow-Clone/issues"
   },
