@@ -10,5 +10,14 @@ class Api::SessionsController < ApplicationController
             login!(@user)
             render 'api/users/show'
         end
+    end 
+    
+    def show
+        @user = current_user
     end
+
+    def destroy
+        logout!
+        render json: ["logged out"], status: 200
+    end 
 end
