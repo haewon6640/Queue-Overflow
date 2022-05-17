@@ -9,7 +9,22 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+ *= require var
+ *= require navbar
  *= require_tree .
  *= require_self
  */
+
+html {
+    font-family: var(--ff-sans);
+}
+.btn {
+    align-self: center;
+    border-radius: var(--br-sm);
+    font-size: 13px;  
+    border: 1px solid transparent; 
+}
+
+.btn-clear {
+    border-color: var(--blue-border);
+}
