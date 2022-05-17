@@ -74,6 +74,18 @@
             background-color: var(--btn-signup-bg-blue-fill);
         }
       }
+      .btn-demo {
+        text-transform: capitalize;
+        background-color: var(--btn-bg-blue);
+        color: var(--white);
+        margin-top: 10px;
+        display: inline-block;
+        padding: 0.7em;
+        width: 100%;
+        &:hover {
+            background-color: var(--btn-signup-bg-blue-fill);
+        }
+      }
 
     }
   }

@@ -8,6 +8,11 @@ class LoginForm extends React.Component {
       password: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.clearErrors();
   }
 
   update(field) {
@@ -17,10 +22,18 @@ class LoginForm extends React.Component {
       });
   }
 
+  handleDemoLogin(e) {
+    e.preventDefault();
+    const user = {email: "demouser@gmail.com",password:"123456"};
+    this.props.processForm(user)
+      .then(()=>this.props.history.push("/"));
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user)
+      .then(()=>this.props.history.push("/"));
   }
 
   renderErrors() {
@@ -62,6 +75,9 @@ class LoginForm extends React.Component {
               <br />
               <button className="btn btn-submit">
                 {this.props.formType}
+              </button>
+              <button onClick={this.handleDemoLogin} className="btn btn-demo">
+                Demo Login
               </button>
             </div>
           </form>

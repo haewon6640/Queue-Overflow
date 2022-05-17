@@ -10,7 +10,9 @@ class SignupForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  componentDidMount() {
+    this.props.clearErrors();
+  }
   update(field) {
     return (e) =>
       this.setState({
@@ -23,7 +25,6 @@ class SignupForm extends React.Component {
     const user = Object.assign({}, this.state);
     this.props.processForm(user)
       .then(()=>this.props.history.push("/"))
-    this.props.history.push({})
   }
 
   renderErrors() {
