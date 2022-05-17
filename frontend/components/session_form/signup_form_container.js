@@ -7,7 +7,7 @@ import SignupForm from './signup_form';
 const mapStateToProps = ({ errors }) => {
   return {
     errors: errors.login,
-    formType: 'signup',
+    formType: 'sign up',
     navLink: <div>Already have an account? <Link to="/login">Log in</Link></div>,
   };
 };

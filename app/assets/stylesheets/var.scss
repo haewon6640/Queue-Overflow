@@ -1,0 +1,11 @@
+:root {
+    // Box Shadow
+    --bs-sm: 0 1px 2px hsla(0,0%,0%,0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05), 0 2px 8px hsla(0, 0%, 0%, 0.05);
+    --bs-xl: 0 10px 24px hsla(0,0%,0%,0.05), 0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
+    // Border Radius
+    --br-sm: 3px;
+    --br-lg: 7px;
+    --ff-sans: "Segoe UI Adjusted","Segoe UI","Liberation Sans",sans-serif;
+    // font size body
+    --fs-body: 1.15384615rem;
+}

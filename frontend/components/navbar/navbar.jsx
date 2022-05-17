@@ -1,23 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect} from "react-router-dom";
 
-export default ({ currentUser, logout}) => {
+export default ({ currentUser, logout, history}) => {
+    const handleLogout = (e) => {
+        e.preventDefault();
+        console.log(history);
+        logout().then(()=><Redirect to="/"/>);
+    }
     const sessionLinks = () => (
-        <nav className="login-signup">
-            <Link to="/login">Login</Link>
-            &nbsp;or&nbsp;
-            <Link to="/signup">Sign up</Link>
+        <nav className="nav-right">
+            <Link className="btn btn-nav btn-login" to="/login">Log in</Link>
+            <Link className="btn btn-nav btn-signup" to="/signup">Sign up</Link>
         </nav>
     );
     const welcome = () => (
-        <hgroup className="header-group">
+        <nav className="nav-right">
             <h2 className="header-name">{currentUser.username}</h2>
-            <button className="header-button" onClick={logout}>Log Out</button>
-        </hgroup>
+            <button className="header-button" onClick={handleLogout}>Log Out</button>
+        </nav>
     )
     return (
-        <nav>
-            {currentUser ? welcome() : sessionLinks()}
-        </nav>
+        <header className="nav-container">
+            <div className="nav-inner-container">
+                <Link to="/" className="nav-logo">
+                    <img className="nav-logo-img" src={window.logo} alt="Flow Overstack" />
+                </Link>
+                {currentUser ? welcome() : sessionLinks()}
+            </div>
+        </header>
     );
 }
