@@ -1,0 +1,134 @@
+// Place all the styles related to the api::posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.question-index-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    // width: 300px;
+    padding: 24px;
+
+    .question-index-header {
+        display: flex;
+        justify-content: space-between;
+        width: 500px;
+        margin-top: 10px;
+        padding-bottom: 30px;
+
+        .question-index-title {
+            font-size: 1.6rem;
+        }
+
+        .btn-ask {
+            color: white;
+            padding: 10.4px;
+            background-color: rgb(10, 149, 255);
+            box-shadow: rgba(255, 255, 255, 0.4) 0px 1px 0px 0px inset
+        }
+    }
+
+    .question-index-filter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 500px;
+        .question-count {
+            padding-bottom: 5px;
+        }
+        .filters {
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            li {
+                border: 1px solid hsl(210,8%,55%);
+                color: hsl(210,8%,45%);
+                font-size: 14px;
+                padding: 0.8em;
+                padding-bottom: 0.9em;
+                line-height: calc(15/13);
+            }
+            li:not(:last-child) {
+                margin-right: -1px;
+            }
+            li:first-child {
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+            }
+            .selected {
+                background-color: hsl(210,8%,90%);
+                color: hsl(210,8%,25%);
+                border-color: hsl(210,8%,65%);
+            }
+            li:last-child {
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+        }
+    }
+    .questions {
+        display:inline-block;
+    }
+    .question-index-item {
+        border: 1px solid lightgray;
+        width: 500px;
+        padding: 20px;
+        font-weight: 400;
+
+        .stats {
+            display: flex;
+            gap: 3px;
+            font-size: 13px;
+            color: hsl(210,8%,45%);
+            margin-bottom: 7px;
+        }
+        .question-index-item-title {
+            color: hsl(206%,100%,40%);
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+        .question-index-item-body {
+            font-size: 13px;
+            color: rgb(59, 64, 69);
+            word-wrap: break-word;
+            overflow: hidden;
+            max-height: 34px;
+            line-height: 17px;
+            margin-bottom: 7px;
+        }
+        .question-index-item-info {
+            display: flex;
+            justify-content: space-between;
+
+            .tags {
+                display: flex;
+                justify-content: flex-start;
+                
+                li {
+                    align-self: center;
+                    margin-right: 2px;
+                    padding: 4.8px 6px;
+                    font-size: 12px;
+                    color: rgb(57, 115, 157);
+                    background-color: rgb(225, 236, 244);
+                    border-radius: 3px;
+                }
+                
+            }
+
+            .question-index-item-info-right {
+                display: flex;
+                justify-content: flex-end;
+                font-size: 13px;
+                .asker {
+                    color: rgb(0, 116, 204);
+                    margin-right: 4px;
+                }
+                time {
+                    color: rgb(106, 115, 124);
+                }
+            }
+        }
+    }
+}

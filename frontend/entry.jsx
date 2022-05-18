@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store"
 import {login,logout,signup} from "./actions/session_actions"
 import Root from "./components/root"
-// import {login} from "./util/session_api_util";
+import {fetchPosts} from "./actions/post_actions";
+import {fetchPosts as ajaxfetch} from "./util/post_api_util";
 document.addEventListener("DOMContentLoaded",()=>{
     let store;
     if (window.currentUser) {
@@ -18,8 +19,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     } else {
         store = configureStore();
     }
+    window.fetchPosts = fetchPosts;
     window.store = store;
     window.logout = logout;
+    window.ajaxfetch = ajaxfetch;
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store} />, root);
 })

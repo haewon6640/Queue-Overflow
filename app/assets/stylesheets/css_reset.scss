@@ -39,6 +39,9 @@ ol, ul {
 blockquote, q {
 	quotes: none;
 }
+a:visited {
+	color: inherit;
+}
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
