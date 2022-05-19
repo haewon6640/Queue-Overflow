@@ -29,7 +29,7 @@ export const fetchPosts = (data) => dispatch => (
     , errors => dispatch(receivePostErrors(errors)))
 )
 export const fetchPost = (id) => dispatch => (
-    PostApiUtil.fetchPosts(id).then(post=>
+    PostApiUtil.fetchPost(id).then(post=>
         dispatch(receivePost(post))
     , errors => dispatch(receivePostErrors(errors)))
 )

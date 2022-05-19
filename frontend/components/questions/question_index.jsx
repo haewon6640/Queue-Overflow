@@ -12,6 +12,9 @@ export default class QuestionIndex extends React.Component {
     }
 
     render() {
+        if (!this.props.questions) {
+            return null;
+        }
         return (
             <div className="question-index-container">
                 <div className="question-index-header">

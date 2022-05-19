@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {difference} from "../../util/helper"
 export default class QuestionIndexItem extends React.Component {
     constructor(props) {
         super(props);
@@ -7,17 +8,11 @@ export default class QuestionIndexItem extends React.Component {
             time: ""
         }
     }
-    difference(date1, date2) {  
-        const date1utc = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
-        const date2utc = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
-        let day = 1000*60*60*24;
-        return(date2utc - date1utc)/day
-      }
       
     componentDidMount() {
 
         this.setState({
-            time: this.difference(new Date(Date.parse(this.props.question.created_at)),new Date())
+            time: difference(new Date(Date.parse(this.props.question.created_at)),new Date())
         })
     }
     render() {

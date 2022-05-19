@@ -4,7 +4,6 @@ import { Link, Redirect} from "react-router-dom";
 export default ({ currentUser, logout, history}) => {
     const handleLogout = (e) => {
         e.preventDefault();
-        console.log(history);
         logout().then(()=><Redirect to="/"/>);
     }
     const sessionLinks = () => (
@@ -25,6 +24,7 @@ export default ({ currentUser, logout, history}) => {
                 <Link to="/" className="nav-logo">
                     <img className="nav-logo-img" src={window.logo} alt="Flow Overstack" />
                 </Link>
+                <Link to="/questions">Questions</Link>
                 {currentUser ? welcome() : sessionLinks()}
             </div>
         </header>
