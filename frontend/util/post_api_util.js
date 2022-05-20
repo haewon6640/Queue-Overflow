@@ -13,22 +13,18 @@ export const fetchPost = id => (
     })
 )
 
-export const createPost = formPost => (
+export const createPost = post => (
     $.ajax({
         method: 'POST',
         url: 'api/posts',
-        data: formPost,
-        contentType:false,
-        processData: false
+        data: {post}
     })
 )
 export const updatePost = (post) => (
     $.ajax({
         method: 'PATCH',
         url: `api/posts/${post.id}`,
-        data: post,
-        contentType:false,
-        processData: false
+        data: { post}
     })
 )
 export const deletePost = (id) => (

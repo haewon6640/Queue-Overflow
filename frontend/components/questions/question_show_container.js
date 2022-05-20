@@ -4,7 +4,8 @@ import QuestionShow from "./question_show";
 
 
 const mSTP = (state,ownProps) => ({
-    question: state.entities.posts[ownProps.match.params.id]
+    question: state.entities.posts[ownProps.match.params.id],
+    currentUserId: state.session.currentUserId
 })
 
 const mDTP = dispatch => ({

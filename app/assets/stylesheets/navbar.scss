@@ -2,9 +2,11 @@
 
     background-color: var(--nav-color);
     box-shadow: var(--bs-sm);
-    position:static;
+    position:fixed;
+    top: 0;
+    width: 100%;
     border-top: 3px solid var(--orange);
-    
+
     .nav-inner-container {
         display: flex;
         flex-direction: row;
@@ -42,4 +44,9 @@
             }
         }
     }
+}
+
+// So element doesn't become hidden by navbar
+.main-container:nth-child(n-3) {
+    padding-top: 44.6px;
 }

@@ -1,0 +1,129 @@
+:root {
+    --bg-img: url(https://cdn.sstatic.net/Img/ask/background.svg?v=2e9a8205b368);
+    --bs-lg: 0 1px 3px hsla(0,0%,0%,0.06), 0 2px 6px hsla(0, 0%, 0%, 0.06), 0 3px 8px hsla(0, 0%, 0%, 0.09);
+}
+.create-form-container {
+    background-color: rgb(241, 242, 243);
+    height: 1000px;
+}
+.create-form {
+    background-color: rgb(241, 242, 243);
+    padding: 0 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    * {
+        background-color: white;
+    }
+    .header {
+        background-image: var(--bg-img);
+        background-color: rgb(241, 242, 243);
+        display: flex;
+        align-items: center;
+        height: 130px;
+        font-size: 27px;
+        line-height: 17px;
+        // text-align: left;
+        padding: 24px 0;
+        color: rgb(35, 38, 41);
+        border-image-repeat: stretch;
+        background-position: right bottom;
+        background-repeat: no-repeat;
+        .headline {
+            background-color: rgb(241, 242, 243);
+        }
+    }
+    .create-flex {
+        background-color: rgb(241, 242, 243);
+        display:flex;
+        justify-content: space-between;
+        .form-container {
+            box-shadow: var(--bs-lg);
+            display:block;
+            flex-grow: 1;
+            flex-shrink: 1;
+            form {
+                border-radius: 3px;
+                padding: 16px;
+                box-sizing: border-box;
+                width: 100%;
+                display: inline-block;
+                border: 1px solid rgb(214, 217, 220);
+                .label {
+                    padding: 0 2px;
+                    margin-bottom: 4px;
+                    .main-label {
+                        display: inline-block;
+                        font-weight: 600;
+                        font-size: 15px;
+                        line-height: 20px;
+                        color: rgb(12, 13, 14);
+                    }
+                    .lower-label {
+                        padding: inherit;
+                        margin-top: 5px;
+                        font-size: 12px;
+                        color: rgb(59, 64, 69);
+                    }
+                }
+
+                .input {
+                    margin-top: 6px;
+                    width: calc(100% - 23px);
+                    color: rgb(12, 13, 14);
+                    border-radius: 3px;
+                    padding: 7.8px 9.1px;
+                    font-size: 13px;
+                    border: 1px solid rgb(186, 191, 196);
+                    margin-bottom: 10px;
+                }
+                .btn-submit {
+                    margin-top: 20px;
+                    color: white;
+                    padding: 10.4px;
+                    background-color: rgb(10, 149, 255);
+                    box-shadow: rgba(255, 255, 255, 0.4) 0px 1px 0px 0px inset;
+                }
+            }
+        }
+        .steps-container {
+            width: 316px;
+            margin-left: 24px;
+            border-color: rgb(214, 217, 220);
+            border-radius: 3px;
+            box-shadow: var(--bs-lg);
+            .steps-title {
+                padding: 12px 15px;
+                color: rgb(82, 89, 96);
+                border-radius: 3px;
+                background-color: rgb(248, 249, 249);
+            }
+            .steps {
+                padding: 16px 15px 0 15px;
+                border-top: 1px solid rgb(227, 230, 232);
+                .steps-info {
+                    font-size: 13px;
+                    margin-bottom: 20px;
+                }
+                .steps-instruction {
+                    .number {
+                        font-size: 15px;
+                        color: var(--btn-signup-bg-blue-fill)
+                    }
+                    li {
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: rgb(35, 38, 41);
+                        align-self: center;
+                        text-align: start;
+                    }
+                    :not(:last-child) {
+                        margin-bottom: 5px;
+                    }   
+
+                }
+            }
+
+        }
+    }
+}

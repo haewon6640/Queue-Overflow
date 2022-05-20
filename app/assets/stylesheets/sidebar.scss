@@ -1,0 +1,90 @@
+.sidebar-container {
+    position:sticky;
+    width: 164px;
+    top:44.6px;
+    height: 600px;
+    .sidebar {
+        .sidebar-items {
+            margin-top: 30px;
+            .go-home {
+                li {
+                    font-size: 13px;
+                    color: rgb(82, 89, 96);
+                    line-height: 26px;
+                    padding: 4px 4px 4px 8px;
+                }
+            }
+            .go-home.active {
+                li {
+                    border-right: 3px solid rgb(244, 130, 37);
+                    background-color: rgb(241, 242, 243);
+                    color: rgb(12, 13, 14);
+                    font-weight: 700;
+                }
+            }
+            .public {
+                .public-label {
+                    text-transform: uppercase;
+                    margin: 16px 0px 4px 8px;
+                    font-size: 11px;
+                    line-height: 14.3846px;
+                    color: rgb(106, 115, 124);
+                }
+                .public-items {
+                    .icon-flex {
+                        li {
+                            display: flex;
+                            padding: 8px 6px 8px 8px;
+                            align-items: center;
+                            i {
+                                margin-top: 2px;
+                                margin-right: 4px;
+                                color: rgb(131, 140, 149);
+                            }
+                            p {
+                                display: block;
+                                font-size: 13px;
+                                line-height: 17px;
+                                color: rgb(82, 89, 96);
+                            }
+                        }
+                    }
+                    .public-item {
+                        li {
+                            padding: 8px 4px 8px 30px;
+                            .flex-center {
+                                display: flex;
+                                align-items: center;
+                                .flex-truncate {
+                                    overflow: hidden;
+                                    line-height: 17px;
+                                    max-width: 100%;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    font-size: 13px;
+                                    color: rgb(82, 89, 96);
+                                }
+                            }
+                        }
+                    }
+                    a.active {
+                        li {
+                            border-right: 3px solid rgb(244, 130, 37);
+                            background-color: rgb(241, 242, 243);
+                            font-weight: 700;
+                            color: rgb(12, 13, 14);
+                            p {
+                                color: rgb(12, 13, 14);
+                            }
+                            .flex-center {
+                                .flex-truncate {
+                                    color: rgb(12, 13, 14);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import React from "react"
 import QuestionIndexItem from "./question_index_item"
-
+import { Link } from "react-router-dom";
 export default class QuestionIndex extends React.Component {
 
     constructor(props) {
@@ -19,7 +19,9 @@ export default class QuestionIndex extends React.Component {
             <div className="question-index-container">
                 <div className="question-index-header">
                     <h1 className="question-index-title">All Questions</h1>
-                    <button className="btn btn-ask">Ask Question</button>
+                    <button className="btn btn-ask">
+                       <Link to="/questions/new">Ask Question</Link>
+                    </button>
                 </div>
                 <div className="question-index-filter">
                     <p className="question-count">{this.props.questions.length} questions</p>

@@ -1,6 +1,6 @@
 import React from "react";
 import { difference } from "../../util/helper";
-
+import { Link } from "react-router-dom";
 export default class QuestionShow extends React.Component {
     constructor(props) {
         super(props);
@@ -15,7 +15,6 @@ export default class QuestionShow extends React.Component {
         }
     }
     render() {
-        console.log(this.props.question);
         if (!this.props.question) {
             return null;
         }
@@ -56,13 +55,13 @@ export default class QuestionShow extends React.Component {
                             <li>react</li>
                         </ul>
                     </div>
-                    {/* <div className="more-info">
+                    <div className="more-info">
                         <ul className="share">
                             <li>Share</li>
-                            <li>Edit</li>
+                            <li><Link to={`/questions/${post.id}/edit`}>Edit</Link></li>
                             <li>Follow</li>
                         </ul>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         );
