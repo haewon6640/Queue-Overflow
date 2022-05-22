@@ -33,8 +33,10 @@ export default class SideBar extends React.Component {
                             <ul className="public-items">
                                 <NavLink className="icon-flex" to="/questions">
                                     <li>
-                                        <i className="fas fa-globe-asia"></i>
-                                        <p>Questions</p>
+                                        <div>
+                                            <i className="fas fa-globe-asia"></i>
+                                            <p>Questions</p>
+                                        </div>
                                     </li>
                                 </NavLink>
                                 <NavLink className="public-item" to="/tags">

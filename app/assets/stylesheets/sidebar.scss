@@ -22,6 +22,11 @@
                     font-weight: 700;
                 }
             }
+            .go-home:hover {
+                li {
+                    color: rgb(12, 13, 14);
+                }
+            }
             .public {
                 .public-label {
                     text-transform: uppercase;
@@ -33,19 +38,21 @@
                 .public-items {
                     .icon-flex {
                         li {
-                            display: flex;
-                            padding: 8px 6px 8px 8px;
-                            align-items: center;
-                            i {
-                                margin-top: 2px;
-                                margin-right: 4px;
-                                color: rgb(131, 140, 149);
-                            }
-                            p {
-                                display: block;
-                                font-size: 13px;
-                                line-height: 17px;
-                                color: rgb(82, 89, 96);
+                            div {
+                                display: flex;
+                                padding: 8px 6px 8px 8px;
+                                align-items: center;
+                                i {
+                                    margin-top: 2px;
+                                    margin-right: 4px;
+                                    color: rgb(131, 140, 149);
+                                }
+                                p {
+                                    display: block;
+                                    font-size: 13px;
+                                    line-height: 17px;
+                                    color: rgb(82, 89, 96);
+                                }
                             }
                         }
                     }
@@ -73,6 +80,9 @@
                             background-color: rgb(241, 242, 243);
                             font-weight: 700;
                             color: rgb(12, 13, 14);
+                            i {
+                                color: rgb(12, 13, 14);   
+                            }
                             p {
                                 color: rgb(12, 13, 14);
                             }
@@ -81,6 +91,17 @@
                                     color: rgb(12, 13, 14);
                                 }
                             }
+                        }
+                    }
+                    a:not(.active):hover li div{
+                        p {
+                            color: rgb(12, 13, 14);
+                        }
+                        i {
+                            color: rgb(12, 13, 14);
+                        }
+                        .flex-truncate {
+                            color:rgb(12, 13, 14);
                         }
                     }
                 }
