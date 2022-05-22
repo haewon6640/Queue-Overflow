@@ -4,7 +4,7 @@ import configureStore from "./store/store";
 import { login, logout, signup } from "./actions/session_actions";
 import Root from "./components/root";
 import { fetchPosts,createPost } from "./actions/post_actions";
-import { fetchPosts as ajaxfetch } from "./util/post_api_util";;
+import { fetchPosts as ajaxfetch, fetchPost } from "./util/post_api_util";;
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser) {
@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.logout = logout;
   window.ajaxfetch = ajaxfetch;
   window.createPost = createPost;
+  window.fetchPost = fetchPost;
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root);
 });

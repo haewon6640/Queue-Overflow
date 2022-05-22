@@ -7,9 +7,8 @@ export default (state = {}, action) => {
         case RECEIVE_POSTS:
             return Object.assign({},action.posts)
         case RECEIVE_POST:
-            console.log(action);
             newState[action.post.id] = action.post
-            return newState;
+            return Object.assign({},newState)
         case REMOVE_POST:
             delete newState[action.postId]
             return newState;

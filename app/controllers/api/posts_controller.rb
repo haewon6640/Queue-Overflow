@@ -17,8 +17,13 @@ class Api::PostsController < ApplicationController
     def create 
         @post = Post.new(post_params);
         if @post.save
-            render :show
+            if @post.parent_post_id.nil?
+                render :show
+            else
+                render :create_answer
+            end
         else
+            p @post.errors.full_messages
             render json: @post.errors.full_messages, status: 422
         end 
     end
@@ -58,7 +63,6 @@ class Api::PostsController < ApplicationController
 
     def post_params
         params.require(:post).permit(:title, :body, :poster_id, :parent_post_id)
-
     end
 
 end

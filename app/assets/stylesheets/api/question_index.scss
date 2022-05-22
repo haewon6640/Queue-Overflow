@@ -74,11 +74,14 @@
         display:inline-block;
         width: 100%;
     }
+    .question-index-item:first-child {
+        border-top:1px solid lightgray;
+    }
     .question-index-item {
-        border: 1px solid lightgray;
+        border-bottom: 1px solid lightgray;
+        margin-left: -24px;
         padding: 20px;
         font-weight: 400;
-
 
         .stats {
             display: flex;

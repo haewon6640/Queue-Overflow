@@ -1,80 +1,128 @@
 .question-show-container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
     padding: 24px;
     width: 100%;
-
-    .question-show-top {
+    .question-container {
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
         width: 100%;
-        margin-bottom: 15px;
+        .question-show-top {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 15px;
 
-        .title {
-            font-size: 27px;
-            line-height: 35.1px;
+            .title {
+                font-size: 27px;
+                line-height: 35.1px;
+            }
+            .btn-ask {
+                color: white;
+                padding: 10.4px;
+                background-color: rgb(10, 149, 255);
+                box-shadow: rgba(255, 255, 255, 0.4) 0px 1px 0px 0px inset;
+            }
         }
-        .btn-ask {
-            color: white;
-            padding: 10.4px;
-            background-color: rgb(10, 149, 255);
-            box-shadow: rgba(255, 255, 255, 0.4) 0px 1px 0px 0px inset;
+        .stats {
+            display: flex;
+            justify-content: flex-start;
+            gap: 3px;
+            font-size: 13px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgb(227, 230, 232);
+            width: 100%;
+            li {
+                color: rgb(106, 115, 124);
+                margin-bottom: 8px;
+                span {
+                    color: rgb(35, 38, 41);
+                }
+            }
         }
-    }
-    .stats {
-        display: flex;
-        justify-content: flex-start;
-        gap: 3px;
-        font-size: 13px;
-        margin-bottom: 7px;
-        width: 100%;
-        li {
-            color: rgb(106, 115, 124);
-            span {
-                color: rgb(35, 38, 41);
+        .question {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            .body {
+                font-size: 15px;
+                line-height: 22.5px;
+            }
+
+            .tags-container {
+                margin-top: 24px;
+                margin-bottom: 24px;
+                .tags {
+                    display: flex;
+                    justify-content: flex-start;
+
+                    li {
+                        align-self: center;
+                        margin-right: 2px;
+                        padding: 4.8px 6px;
+                        font-size: 12px;
+                        color: rgb(57, 115, 157);
+                        background-color: rgb(225, 236, 244);
+                        border-radius: 3px;
+                    }
+                }
+            }
+
+            .share {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 6px;
+                font-size: 13px;
+                li,
+                a {
+                    color: rgb(106, 115, 124);
+                }
             }
         }
     }
-    .question {
-        display:flex;
-        flex-direction: column;
+    .bottom-border {
+        margin-top: 30px;
         width: 100%;
+        border-bottom: 1px solid rgb(227, 230, 232);
+    }
+    .answer-container {
+        margin-top: 20px;
         .body {
             font-size: 15px;
             line-height: 22.5px;
         }
-        
-        .tags-container {
-            margin-top: 24px;
-            margin-bottom: 24px;
-            .tags {
+        .more-info {
+            margin-top: 20px;
+            .share {
                 display: flex;
+                flex-direction: row;
                 justify-content: flex-start;
-                
-                li {
-                    align-self: center;
-                    margin-right: 2px;
-                    padding: 4.8px 6px;
-                    font-size: 12px;
-                    color: rgb(57, 115, 157);
-                    background-color: rgb(225, 236, 244);
-                    border-radius: 3px;
-    
+                gap: 6px;
+                font-size: 13px;
+                li,
+                a {
+                    color: rgb(106, 115, 124);
                 }
             }
         }
+    }
+    .answer-form-container {
+        width: 100%;
 
-        .share {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            gap: 6px;
-            font-size: 13px;
-            li,a {
-               color: rgb(106, 115, 124);
-            }
+        h2 {
+            padding-top: 20px;
+            margin-bottom: 19px;
+            font-size: 19px;
+        }
+
+        textarea {
+            width: 100%;
+        }
+        .btn-answer {
+            margin-top: 26px;
+            margin-bottom: 15px;
         }
     }
 }

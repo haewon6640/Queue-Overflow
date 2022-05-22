@@ -54,12 +54,7 @@
           font-size: 13px;
           padding: 0.6em 0.7em;
           border-radius: var(--br-sm);
-          border: 1px solid var(--input-border-gray); 
-          &:focus {
-            outline: none;
-            border-color: var(--blue);
-            box-shadow: 0 0 0 4px rgb(217,234,247);
-          }
+          border: 1px solid var(--input-border-gray);
         }
       }
       

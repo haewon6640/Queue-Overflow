@@ -10,14 +10,18 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_ANSWER": () => (/* binding */ RECEIVE_ANSWER),
 /* harmony export */   "RECEIVE_POST": () => (/* binding */ RECEIVE_POST),
 /* harmony export */   "RECEIVE_POSTS": () => (/* binding */ RECEIVE_POSTS),
 /* harmony export */   "RECEIVE_POST_ERRORS": () => (/* binding */ RECEIVE_POST_ERRORS),
 /* harmony export */   "REMOVE_POST": () => (/* binding */ REMOVE_POST),
+/* harmony export */   "createAnswer": () => (/* binding */ createAnswer),
 /* harmony export */   "createPost": () => (/* binding */ createPost),
 /* harmony export */   "deletePost": () => (/* binding */ deletePost),
 /* harmony export */   "fetchPost": () => (/* binding */ fetchPost),
 /* harmony export */   "fetchPosts": () => (/* binding */ fetchPosts),
+/* harmony export */   "receiveAnswer": () => (/* binding */ receiveAnswer),
+/* harmony export */   "receivePost": () => (/* binding */ receivePost),
 /* harmony export */   "receivePostErrors": () => (/* binding */ receivePostErrors),
 /* harmony export */   "updatePost": () => (/* binding */ updatePost)
 /* harmony export */ });
@@ -27,6 +31,7 @@ var RECEIVE_POSTS = "RECEIVE_POSTS";
 var RECEIVE_POST = "RECEIVE_POST";
 var REMOVE_POST = "REMOVE_POST";
 var RECEIVE_POST_ERRORS = "RECEIVE_POST_ERRORS";
+var RECEIVE_ANSWER = "RECEIVE_ANSWER";
 
 var receivePosts = function receivePosts(posts) {
   return {
@@ -35,10 +40,17 @@ var receivePosts = function receivePosts(posts) {
   };
 };
 
-var receivePost = function receivePost(post) {
+var receiveAnswer = function receiveAnswer(answer) {
+  return {
+    type: RECEIVE_ANSWER,
+    answer: answer
+  };
+};
+var receivePost = function receivePost(res) {
   return {
     type: RECEIVE_POST,
-    post: post
+    post: res.post,
+    answers: res.answers
   };
 };
 
@@ -66,8 +78,8 @@ var fetchPosts = function fetchPosts(data) {
 };
 var fetchPost = function fetchPost(id) {
   return function (dispatch) {
-    return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchPost(id).then(function (post) {
-      return dispatch(receivePost(post));
+    return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchPost(id).then(function (res) {
+      return dispatch(receivePost(res));
     }, function (errors) {
       return dispatch(receivePostErrors(errors));
     });
@@ -75,8 +87,17 @@ var fetchPost = function fetchPost(id) {
 };
 var createPost = function createPost(post) {
   return function (dispatch) {
-    return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__.createPost(post).then(function (post) {
-      return dispatch(receivePost(post));
+    return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__.createPost(post).then(function (res) {
+      return dispatch(receivePost(res));
+    }, function (errors) {
+      return dispatch(receivePostErrors(errors));
+    });
+  };
+};
+var createAnswer = function createAnswer(answer) {
+  return function (dispatch) {
+    return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__.createPost(answer).then(function (res) {
+      return dispatch(receiveAnswer(res));
     }, function (errors) {
       return dispatch(receivePostErrors(errors));
     });
@@ -200,9 +221,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.js");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.js");
-/* harmony import */ var _questions_question_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./questions/question_index_container */ "./frontend/components/questions/question_index_container.js");
+/* harmony import */ var _posts_question_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./posts/question_index_container */ "./frontend/components/posts/question_index_container.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _questions_question_show_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./questions/question_show_container */ "./frontend/components/questions/question_show_container.js");
+/* harmony import */ var _posts_question_show_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./posts/question_show_container */ "./frontend/components/posts/question_show_container.js");
 /* harmony import */ var _forms_create_question_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./forms/create_question_form_container */ "./frontend/components/forms/create_question_form_container.js");
 /* harmony import */ var _forms_edit_question_form_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./forms/edit_question_form_container */ "./frontend/components/forms/edit_question_form_container.js");
 /* harmony import */ var _sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./sidebar/sidebar_container */ "./frontend/components/sidebar/sidebar_container.js");
@@ -221,17 +242,7 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "main-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "content-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "body-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-    exact: true,
-    path: "/",
-    render: function render() {
-      return 'Home';
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__.AuthRoute, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__.AuthRoute, {
     exact: true,
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -241,20 +252,30 @@ var App = function App() {
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__.ProtectedRoute, {
     exact: true,
+    path: "/questions/:id/edit",
+    component: _forms_edit_question_form_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__.ProtectedRoute, {
+    exact: true,
     path: "/questions/new",
     component: _forms_create_question_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "content-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "body-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+    exact: true,
+    path: "/",
+    render: function render() {
+      return 'Home';
+    }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
     exact: true,
     path: "/questions/:id",
-    component: _questions_question_show_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__.ProtectedRoute, {
-    exact: true,
-    path: "/questions/:id/edit",
-    component: _forms_edit_question_form_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _posts_question_show_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
     exact: true,
     path: "/questions",
-    component: _questions_question_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _posts_question_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   })))));
 };
 
@@ -536,9 +557,6 @@ var EditQuestionForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        console.log(e);
-        console.log(e.target.value);
-
         _this2.setState(_defineProperty({}, field, e.target.value));
       };
     }
@@ -806,10 +824,148 @@ var mDTP = function mDTP(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/questions/question_index.jsx":
-/*!**********************************************************!*\
-  !*** ./frontend/components/questions/question_index.jsx ***!
-  \**********************************************************/
+/***/ "./frontend/components/posts/answer_form.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/posts/answer_form.jsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var AnswerForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(AnswerForm, _React$Component);
+
+  var _super = _createSuper(AnswerForm);
+
+  function AnswerForm(props) {
+    var _this;
+
+    _classCallCheck(this, AnswerForm);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      title: "answer_to_".concat(props.postId),
+      body: "",
+      poster_id: props.currUserId,
+      parent_post_id: props.postId
+    };
+    _this.update = _this.update.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(AnswerForm, [{
+    key: "update",
+    value: function update(e) {
+      e.preventDefault();
+      this.setState({
+        body: e.currentTarget.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      this.props.createAnswer(this.state).then(function () {
+        _this2.setState({
+          body: ""
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+        onSubmit: this.handleSubmit,
+        className: "answer-form-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Your Answer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+        onChange: this.update,
+        id: "",
+        cols: "30",
+        rows: "10",
+        value: this.state.body
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        className: "btn btn-blue btn-answer"
+      }, "Post Your Answer"));
+    }
+  }]);
+
+  return AnswerForm;
+}((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter)(AnswerForm));
+
+/***/ }),
+
+/***/ "./frontend/components/posts/answer_item.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/posts/answer_item.jsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "answer-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "body"
+  }, props.answer.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "more-info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
+    className: "share"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Share"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Follow"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "bottom-border"
+  }));
+}
+
+/***/ }),
+
+/***/ "./frontend/components/posts/question_index.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/posts/question_index.jsx ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -819,7 +975,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _question_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question_index_item */ "./frontend/components/questions/question_index_item.jsx");
+/* harmony import */ var _question_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question_index_item */ "./frontend/components/posts/question_index_item.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
@@ -908,10 +1064,10 @@ var QuestionIndex = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/questions/question_index_container.js":
-/*!*******************************************************************!*\
-  !*** ./frontend/components/questions/question_index_container.js ***!
-  \*******************************************************************/
+/***/ "./frontend/components/posts/question_index_container.js":
+/*!***************************************************************!*\
+  !*** ./frontend/components/posts/question_index_container.js ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -922,7 +1078,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
 /* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
-/* harmony import */ var _question_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./question_index */ "./frontend/components/questions/question_index.jsx");
+/* harmony import */ var _question_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./question_index */ "./frontend/components/posts/question_index.jsx");
 
 
 
@@ -947,10 +1103,10 @@ var mDTP = function mDTP(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/questions/question_index_item.jsx":
-/*!***************************************************************!*\
-  !*** ./frontend/components/questions/question_index_item.jsx ***!
-  \***************************************************************/
+/***/ "./frontend/components/posts/question_index_item.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/posts/question_index_item.jsx ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1047,10 +1203,10 @@ var QuestionIndexItem = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/questions/question_show.jsx":
-/*!*********************************************************!*\
-  !*** ./frontend/components/questions/question_show.jsx ***!
-  \*********************************************************/
+/***/ "./frontend/components/posts/question_show.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/posts/question_show.jsx ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1061,7 +1217,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/helper */ "./frontend/util/helper.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _answer_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./answer_form */ "./frontend/components/posts/answer_form.jsx");
+/* harmony import */ var _answer_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./answer_item */ "./frontend/components/posts/answer_item.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1088,15 +1246,21 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var QuestionShow = /*#__PURE__*/function (_React$Component) {
   _inherits(QuestionShow, _React$Component);
 
   var _super = _createSuper(QuestionShow);
 
   function QuestionShow(props) {
+    var _this;
+
     _classCallCheck(this, QuestionShow);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.handleCreateAnswer = _this.handleCreateAnswer.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(QuestionShow, [{
@@ -1110,6 +1274,11 @@ var QuestionShow = /*#__PURE__*/function (_React$Component) {
       if (prevProps.match.params.id != this.props.match.params.id) {
         this.props.fetchPost(this.props.match.params.id);
       }
+    }
+  }, {
+    key: "handleCreateAnswer",
+    value: function handleCreateAnswer(answer) {
+      this.props.createAnswer(answer).then(this.props.fetchPost(this.props.match.params.id));
     }
   }, {
     key: "render",
@@ -1141,12 +1310,16 @@ var QuestionShow = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "question-show-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "question-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "question-show-top"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
         className: "title"
       }, post.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-        className: "btn btn-ask"
-      }, "Ask Question")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
+        className: "btn btn-blue"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        to: "/questions/new"
+      }, "Ask Question"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
         className: "stats"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Asked ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, create_ago)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Modified ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, update_ago))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "question"
@@ -1160,9 +1333,20 @@ var QuestionShow = /*#__PURE__*/function (_React$Component) {
         className: "more-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
         className: "share"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Share"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Share"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
         to: "/questions/".concat(post.id, "/edit")
-      }, "Edit")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Follow")))));
+      }, "Edit")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Follow"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "bottom-border"
+      }), this.props.answers.map(function (answer) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_answer_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          key: answer.id,
+          answer: answer
+        });
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_answer_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        createAnswer: this.props.createAnswer,
+        postId: post.id,
+        currUserId: this.props.currUserId
+      }));
     }
   }]);
 
@@ -1173,10 +1357,10 @@ var QuestionShow = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/questions/question_show_container.js":
-/*!******************************************************************!*\
-  !*** ./frontend/components/questions/question_show_container.js ***!
-  \******************************************************************/
+/***/ "./frontend/components/posts/question_show_container.js":
+/*!**************************************************************!*\
+  !*** ./frontend/components/posts/question_show_container.js ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1186,7 +1370,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
-/* harmony import */ var _question_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./question_show */ "./frontend/components/questions/question_show.jsx");
+/* harmony import */ var _question_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./question_show */ "./frontend/components/posts/question_show.jsx");
 
 
 
@@ -1194,7 +1378,10 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state, ownProps) {
   return {
     question: state.entities.posts[ownProps.match.params.id],
-    currentUserId: state.session.currentUserId
+    answers: Object.keys(state.entities.answers).map(function (key) {
+      return state.entities.answers[key];
+    }),
+    currUserId: state.session.currentUserId
   };
 };
 
@@ -1202,6 +1389,12 @@ var mDTP = function mDTP(dispatch) {
   return {
     fetchPost: function fetchPost(postId) {
       return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_1__.fetchPost)(postId));
+    },
+    createAnswer: function createAnswer(answer) {
+      return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_1__.createAnswer)(answer));
+    },
+    receivePost: function receivePost(post) {
+      return dispatch((0,_actions_post_actions__WEBPACK_IMPORTED_MODULE_1__.receivePost)(post));
     }
   };
 };
@@ -1701,7 +1894,7 @@ var SideBar = /*#__PURE__*/function (_React$Component) {
         return null;
       }
 
-      if (path.includes("new") || path.includes("edit")) {
+      if (path.includes("new") || path.includes("edit") || path.includes("login") || path.includes("signup")) {
         return null;
       }
 
@@ -1782,6 +1975,38 @@ var mSTP = function mSTP(state) {
 
 /***/ }),
 
+/***/ "./frontend/reducers/answers.js":
+/*!**************************************!*\
+  !*** ./frontend/reducers/answers.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/post_actions */ "./frontend/actions/post_actions.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_POST:
+      return Object.assign({}, action.answers);
+
+    case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ANSWER:
+      return Object.assign({}, state, action.answer);
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities.js":
 /*!***************************************!*\
   !*** ./frontend/reducers/entities.js ***!
@@ -1793,14 +2018,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _reducers_posts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../reducers/posts */ "./frontend/reducers/posts.js");
 /* harmony import */ var _reducers_users__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/users */ "./frontend/reducers/users.js");
+/* harmony import */ var _reducers_answers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/answers */ "./frontend/reducers/answers.js");
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
   posts: _reducers_posts__WEBPACK_IMPORTED_MODULE_0__["default"],
+  answers: _reducers_answers__WEBPACK_IMPORTED_MODULE_2__["default"],
   users: _reducers_users__WEBPACK_IMPORTED_MODULE_1__["default"]
 }));
 
@@ -1851,9 +2079,8 @@ __webpack_require__.r(__webpack_exports__);
       return Object.assign({}, action.posts);
 
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_POST:
-      console.log(action);
       newState[action.post.id] = action.post;
-      return newState;
+      return Object.assign({}, newState);
 
     case _actions_post_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_POST:
       delete newState[action.postId];
@@ -43486,6 +43713,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__.logout;
   window.ajaxfetch = _util_post_api_util__WEBPACK_IMPORTED_MODULE_6__.fetchPosts;
   window.createPost = _actions_post_actions__WEBPACK_IMPORTED_MODULE_5__.createPost;
+  window.fetchPost = _util_post_api_util__WEBPACK_IMPORTED_MODULE_6__.fetchPost;
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_root__WEBPACK_IMPORTED_MODULE_4__["default"], {
     store: store

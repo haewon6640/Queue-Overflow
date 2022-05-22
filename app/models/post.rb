@@ -8,4 +8,8 @@ class Post < ApplicationRecord
         foreign_key: :parent_post_id,
         class_name: :Post,
         optional: true
+
+    has_many :answers,
+        foreign_key: :parent_post_id,
+        class_name: :Post
 end

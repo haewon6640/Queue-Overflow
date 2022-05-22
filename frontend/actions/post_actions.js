@@ -3,14 +3,21 @@ export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const RECEIVE_POST = "RECEIVE_POST";
 export const REMOVE_POST = "REMOVE_POST";
 export const RECEIVE_POST_ERRORS = "RECEIVE_POST_ERRORS";
+export const RECEIVE_ANSWER = "RECEIVE_ANSWER";
 
 const receivePosts = posts => ({
     type: RECEIVE_POSTS,
     posts
 })
-const receivePost = post => ({
+
+export const receiveAnswer = (answer) => ({
+    type: RECEIVE_ANSWER,
+    answer
+})
+export const receivePost = res => ({
     type: RECEIVE_POST,
-    post
+    post: res.post,
+    answers: res.answers
 })
 
 const removePost = postId => ({
@@ -29,16 +36,20 @@ export const fetchPosts = (data) => dispatch => (
     , errors => dispatch(receivePostErrors(errors)))
 )
 export const fetchPost = (id) => dispatch => (
-    PostApiUtil.fetchPost(id).then(post=>
-        dispatch(receivePost(post))
+    PostApiUtil.fetchPost(id).then(res=>
+        dispatch(receivePost(res))
     , errors => dispatch(receivePostErrors(errors)))
 )
 export const createPost = (post) => dispatch => (
-    PostApiUtil.createPost(post).then(post=>
-        dispatch(receivePost(post))
+    PostApiUtil.createPost(post).then(res=>
+        dispatch(receivePost(res))
     , errors => dispatch(receivePostErrors(errors)))
 )
-
+export const createAnswer = (answer) => dispatch => (
+    PostApiUtil.createPost(answer).then(res=>
+        dispatch(receiveAnswer(res))
+    , errors => dispatch(receivePostErrors(errors)))
+)
 export const updatePost = (post) => dispatch => (
     PostApiUtil.updatePost(post).then(post=>
         dispatch(receivePost(post))

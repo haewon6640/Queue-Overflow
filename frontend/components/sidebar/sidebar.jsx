@@ -15,7 +15,10 @@ export default class SideBar extends React.Component {
         if (!this.props.loggedIn && path === "/") {
             return null;
         }
-        if (path.includes("new") || path.includes("edit")) {
+        if (path.includes("new") ||
+            path.includes("edit") ||
+            path.includes("login") ||
+            path.includes("signup")) {
             return null;
         }
         return (

@@ -23,12 +23,32 @@ html {
     border-radius: var(--br-sm);
     font-size: 13px;  
     border: 1px solid transparent; 
+    cursor: pointer;
 }
 
 .btn-clear {
     border-color: var(--blue-border);
 }
 
+.btn-blue {
+    color: white;
+    padding: 10.4px;
+    background-color: rgb(10, 149, 255);
+    box-shadow: rgba(255, 255, 255, 0.4) 0px 1px 0px 0px inset
+}
+.btn-blue:hover {
+    background-color: rgb(0, 116, 204);
+}
+.btn-blue:active {
+    background-color: rgb(0, 99, 191);
+    box-shadow: none;
+}
+
+textarea:focus, input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 4px rgb(217,234,247);
+}
 .content-container {
     top: 50px;
     display:flex;
