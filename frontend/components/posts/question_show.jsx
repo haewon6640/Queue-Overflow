@@ -1,13 +1,18 @@
 import React from "react";
 import { difference } from "../../util/helper";
 import { Link } from "react-router-dom";
-import AnswerForm from "./answer_form";
+import AnswerForm from "../forms/answer_form";
 import AnswerItem from "./answer_item";
-
+import CommentForm from "../forms/comment_form";
+import CommentItem from "./comment_item";
 export default class QuestionShow extends React.Component {
     constructor(props) {
         super(props);
-        this.handleCreateAnswer = this.handleCreateAnswer.bind(this);
+        this.state = {
+            show_comment_form: false
+        }
+        this.fetchComments = this.fetchComments.bind(this);
+        this.createComment = this.createComment.bind(this);
     }
 
     componentDidMount() {
@@ -19,16 +24,10 @@ export default class QuestionShow extends React.Component {
             this.props.fetchPost(this.props.match.params.id);
         }
     }
-    handleCreateAnswer(answer) {
-        this.props.createAnswer(answer).then(this.props.fetchPost(this.props.match.params.id))
-    }
-    render() {
-        if (!this.props.question) {
-            return null;
-        }
-        const post = this.props.question;
-        let create_ago = difference(new Date(Date.parse(post.created_at)),new Date());
-        let update_ago = difference(new Date(Date.parse(post.updated_at)),new Date());
+
+    parseDates(created_at, updated_at) {
+        let create_ago = difference(new Date(Date.parse(created_at)),new Date());
+        let update_ago = difference(new Date(Date.parse(updated_at)),new Date());
         if (create_ago === 0) {
             create_ago="Today"
         } else if (create_ago === 1) {
@@ -43,17 +42,42 @@ export default class QuestionShow extends React.Component {
         } else {
             update_ago = `${update_ago} days ago`
         }
+        return {create_ago, update_ago}
+    }
+    fetchComments(post) {
+        let comments = [];
+        post.comments.forEach((commentId)=>{
+            comments.push(this.props.comments[commentId])
+        })
+        return comments;
+    }
 
+    createComment(comment) {
+        this.setState({
+            show_comment_form: false
+        });
+        return this.props.createComment(comment);
+    }
+    render() {
+        if (!this.props.question) {
+            return null;
+        }
+        const post = this.props.question;
+        const {create_ago, update_ago} = this.parseDates(post.created_at,post.updated_at);
+        let comment = this.state.show_comment_form ? 
+            <CommentForm createComment={this.createComment}  postId={post.id} currUserId={this.props.currUserId}/>
+            : <a className="add-comment" onClick={()=>this.setState({show_comment_form: true})}>Add a comment</a>
+            
         return (
             <div className="question-show-container">
                 <div className="question-container">
                     <div className="question-show-top">
                         <h1 className="title">{post.title}</h1>
-                        <button className="btn btn-blue">
-                            <Link to="/questions/new">
+                        <Link to="/questions/new">
+                            <button className="btn btn-blue">
                                 Ask Question
-                            </Link>
-                        </button>
+                            </button>
+                        </Link>
                     </div>
                     <ul className="stats">
                         <li>Asked <span>{create_ago}</span></li>
@@ -77,9 +101,17 @@ export default class QuestionShow extends React.Component {
                         </div>
                     </div>
                 </div>
+                <div className="comment-container">
+                    {this.fetchComments(post).map(comment=>{
+                        return <CommentItem key={comment.id} comment={comment}/>;
+                    })}
+                </div>
+                <div className="add-comment-container">
+                    {comment}
+                </div>
                 <div className="bottom-border"></div>
                 {this.props.answers.map(answer => (
-                    <AnswerItem key={answer.id} answer={answer} />
+                    <AnswerItem key={answer.id} createComment={this.props.createComment} answer={answer} comments={this.fetchComments(answer)}  currUserId={this.props.currUserId}/>
                 ))}
                 <AnswerForm createAnswer={this.props.createAnswer} postId={post.id} currUserId={this.props.currUserId} />
             </div>

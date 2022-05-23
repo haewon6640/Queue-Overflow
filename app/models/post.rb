@@ -12,4 +12,12 @@ class Post < ApplicationRecord
     has_many :answers,
         foreign_key: :parent_post_id,
         class_name: :Post
+
+    has_many :comments,
+        foreign_key: :post_id,
+        class_name: :Comment
+
+    def answer_count 
+        self.answers.count
+    end
 end

@@ -1,0 +1,63 @@
+// Place all the styles related to the api::comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.comment-container {
+    margin-top: 10px;
+    width: 100%;
+    border-style: solid;
+    border-color: rgb(241, 242, 243);
+    border-top-width: 1px;
+    font-size: 13px;
+    line-height: 17px;
+    padding-bottom: 10px;
+    .comment {
+        padding: 6px;
+        border-bottom: 1px solid rgb(241,242,243);
+        .body {
+            word-wrap: break-word;
+            
+            p {
+                font-size: 13px;
+                .commenter {
+                    white-space: nowrap;
+                    padding: 0;
+                    color: rgb(0, 116, 204);
+                    font-size: 13px;;
+                }
+                .commenter:hover,.commenter:active {
+                    color: rgb(10, 149, 255)
+                }
+                .date {
+                    color: rgb(145, 153, 161);
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}
+.add-comment-container {
+    .add-comment {
+        font-size: 13px;
+        color: rgb(131, 140, 149);
+        opacity: 0.6;
+        padding: 0 3px 2px;
+    }
+    .add-comment:hover {
+        color: rgb(10, 149, 255);
+        cursor: pointer;
+    }
+
+}
+
+.comment-form-container {
+    display: flex;
+    gap: 10px;
+    textarea {
+        width: 100%;
+    }
+    .btn-comment {
+        width: 100px;
+    }
+}

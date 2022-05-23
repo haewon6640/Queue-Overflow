@@ -23,7 +23,7 @@ export default class QuestionIndexItem extends React.Component {
             <li className="question-index-item">
                 <ul className="stats">
                     <li>0 votes</li>
-                    <li>0 answers</li>
+                    <li>{question.answer_count} answers</li>
                     <li>3 views</li>
                 </ul>
                 <h3 className="question-index-item-title">

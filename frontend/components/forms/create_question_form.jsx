@@ -57,7 +57,7 @@ export default class CreateQuestionForm extends React.Component {
                                     <p className="lower-label">Add up to 5 tags to describe what your question is about</p>
                                 </label>
                                 <input className="input" name="tags" type="text" placeholder="e.g.(ajax java reactjs)" />
-                                <button className="btn btn-submit">Post your question</button>
+                                <button className="btn btn-blue">Post your question</button>
                             </form>
                         </div>
                         <aside className="steps-container">

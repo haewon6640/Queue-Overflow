@@ -1,12 +1,13 @@
 class Api::PostsController < ApplicationController
     def index 
         # params contain the filter
-        @posts = Post.select("posts.*").where(filter_params.as_json).includes(:poster)
+        @posts = Post.where(filter_params.as_json).includes(:poster, :answers)
         render :index
     end
 
     def show
         @post = Post.find_by(id: params[:id])
+        @answers = Post.where(parent_post_id: params[:id]).includes(:comments)
         if @post
             render :show
         else

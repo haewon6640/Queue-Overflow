@@ -5,10 +5,6 @@ export default class SideBar extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-        console.log(this.props);
-    }
-
     render() {
         // If logged out and at home page, display nothing;
         const path = this.props.location.pathname;

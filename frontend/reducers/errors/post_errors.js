@@ -1,12 +1,11 @@
-import { RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER, CLEAR_ERRORS } from "../actions/session_actions";
+import { RECEIVE_POST_ERRORS, RECEIVE_POST, CLEAR_ERRORS } from "../../actions/post_actions";
 
 export default (state = [], action) => {
     Object.freeze(state)
-    const newState = Object.assign({},state)
     switch(action.type) {
-        case RECEIVE_SESSION_ERRORS:
+        case RECEIVE_POST_ERRORS:
             return action.errors;
-        case RECEIVE_CURRENT_USER:
+        case RECEIVE_POST:
             return [];
         case CLEAR_ERRORS: 
             return [];
