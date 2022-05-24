@@ -5,11 +5,15 @@ export const REMOVE_POST = "REMOVE_POST";
 export const RECEIVE_POST_ERRORS = "RECEIVE_POST_ERRORS";
 export const RECEIVE_ANSWER = "RECEIVE_ANSWER";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const CLEAR_ANSWERS = "CLEAR_ANSWERS";
 const receivePosts = (posts) => ({
     type: RECEIVE_POSTS,
     posts,
 });
 
+export const clearAnswers = () => ({
+    type: CLEAR_ANSWERS
+})
 export const receiveAnswer = (answer) => ({
     type: RECEIVE_ANSWER,
     answer,
@@ -20,6 +24,7 @@ export const receivePost = (res) => ({
     post: res.post,
     answers: res.answers,
     comments: res.comments,
+    votes: res.votes
 });
 
 const removePost = (postId) => ({

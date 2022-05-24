@@ -27,7 +27,20 @@ json.comments do
     end
 end
 
-
+json.votes do 
+    @post.votes.each do |vote|
+        json.set! vote.id do 
+            json.partial! '/api/votes/vote', vote: vote
+        end
+    end
+    @answers.each do |answer|
+        answer.votes.each do |vote|
+            json.set! vote.id do 
+                json.partial! '/api/votes/vote', vote: vote
+            end
+        end
+    end
+end
 
 
 

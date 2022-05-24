@@ -17,7 +17,26 @@ class Post < ApplicationRecord
         foreign_key: :post_id,
         class_name: :Comment
 
+    has_many :votes,
+        foreign_key: :post_id,
+        class_name: :Vote
+
+    has_many :voted_users,
+        through: :votes,
+        source: :voter
+        
     def answer_count 
         self.answers.count
     end
+
+    def score
+        vote_count(true) - vote_count(false)
+    end
+
+    private 
+    def vote_count(boolean)
+        self.votes.where(vote: boolean).pluck("COUNT(*)")[0]
+    end
+
+
 end

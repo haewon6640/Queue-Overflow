@@ -3,9 +3,11 @@ import postsReducer from "../reducers/posts";
 import usersReducer from "../reducers/users";
 import answersReducer from "../reducers/answers";
 import commentsReducer from "../reducers/comments";
+import votesReducer from "../reducers/votes";
 export default combineReducers({
     posts: postsReducer,
     answers: answersReducer,
     users: usersReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    votes: votesReducer
 })

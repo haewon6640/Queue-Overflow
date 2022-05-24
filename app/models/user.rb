@@ -17,6 +17,14 @@ class User < ApplicationRecord
     has_many :commented_posts,
         through: :comments,
         source: :post
+
+    has_many :votes,
+        foreign_key: :voter_id,
+        class_name: :Vote
+
+    has_many :voted_posts,
+        through: :votes,
+        source: :post
         
     def self.find_by_credentials(email,password) 
         user = User.find_by(email: email)

@@ -1,7 +1,7 @@
 class Api::PostsController < ApplicationController
     def index 
         # params contain the filter
-        @posts = Post.where(filter_params.as_json).includes(:poster, :answers)
+        @posts = Post.where(filter_params.as_json).includes(:poster, :answers, :votes)
         render :index
     end
 

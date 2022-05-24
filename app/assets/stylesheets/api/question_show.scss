@@ -41,43 +41,85 @@
                 }
             }
         }
-        .question {
+        .question-vote-container {
             display: flex;
-            flex-direction: column;
+            gap: 20px;
             width: 100%;
-            .body {
-                font-size: 15px;
-                line-height: 22.5px;
-            }
-
-            .tags-container {
-                margin-top: 24px;
-                margin-bottom: 24px;
-                .tags {
-                    display: flex;
-                    justify-content: flex-start;
-
-                    li {
-                        align-self: center;
-                        margin-right: 2px;
-                        padding: 4.8px 6px;
-                        font-size: 12px;
-                        color: rgb(57, 115, 157);
-                        background-color: rgb(225, 236, 244);
-                        border-radius: 3px;
+            .vote {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 0px;
+                color: rgb(106, 115, 124);
+                button {
+                    background: none;
+                    color: inherit;
+                    border: none;
+                    padding: 0;
+                    font-size: 30px;
+                    outline: inherit;
+                    cursor: pointer;
+                    .vote-icon {
+                        path {
+                            fill: rgb(186, 191, 196);
+                            color: rgb(106, 115, 124);
+                        }
+                    }
+                }
+                .downvote {
+                    margin-top: 8px;
+                }
+                p {
+                    font-size: 21px;
+                    color: inherit;
+                }
+                .voted {
+                    .vote-icon {
+                        path {
+                            fill: rgb(244, 130, 37);
+                        }
                     }
                 }
             }
-
-            .share {
+            .question {
                 display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
-                gap: 6px;
-                font-size: 13px;
-                li,
-                a {
-                    color: rgb(106, 115, 124);
+                flex-direction: column;
+                width: 100%;
+                .body {
+                    font-size: 15px;
+                    line-height: 22.5px;
+                }
+
+                .tags-container {
+                    margin-top: 24px;
+                    margin-bottom: 24px;
+                    .tags {
+                        display: flex;
+                        justify-content: flex-start;
+
+                        li {
+                            align-self: center;
+                            margin-right: 2px;
+                            padding: 4.8px 6px;
+                            font-size: 12px;
+                            color: rgb(57, 115, 157);
+                            background-color: rgb(225, 236, 244);
+                            border-radius: 3px;
+                        }
+                    }
+                }
+
+                .share {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    gap: 6px;
+                    font-size: 13px;
+                    li,
+                    a {
+                        color: rgb(106, 115, 124);
+                    }
                 }
             }
         }
@@ -87,22 +129,65 @@
         width: 100%;
         border-bottom: 1px solid rgb(227, 230, 232);
     }
-    .answer-container {
-        margin-top: 20px;
-        .body {
-            font-size: 15px;
+    .answer-vote-container {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        .vote {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 0px;
+            color: rgb(106, 115, 124);
+            button {
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
+                font-size: 30px;
+                outline: inherit;
+                cursor: pointer;
+                .vote-icon {
+                    path {
+                        fill: rgb(186, 191, 196);
+                        color: rgb(106, 115, 124);
+                    }
+                }
+            }
+            .downvote {
+                margin-top: 8px;
+            }
+            p {
+                font-size: 21px;
+                color: inherit;
+            }
+            .voted {
+                .vote-icon {
+                    path {
+                        fill: rgb(244, 130, 37);
+                    }
+                }
+            }
         }
-        .more-info {
+        .answer-container {
             margin-top: 20px;
-            .share {
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
-                gap: 6px;
-                font-size: 13px;
-                li,
-                a {
-                    color: rgb(106, 115, 124);
+            width: 100%;
+            .body {
+                font-size: 15px;
+            }
+            .more-info {
+                margin-top: 20px;
+                .share {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    gap: 6px;
+                    font-size: 13px;
+                    li,
+                    a {
+                        color: rgb(106, 115, 124);
+                    }
                 }
             }
         }
