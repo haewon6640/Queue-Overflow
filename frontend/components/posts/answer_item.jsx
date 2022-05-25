@@ -31,7 +31,6 @@ export default class AnswerItem extends React.Component {
                 Add a comment
             </a>
         );
-        console.log(this.props.answer);
         return (
             <div className="answer-vote-container">
                 <VoteItem

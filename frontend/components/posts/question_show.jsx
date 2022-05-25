@@ -20,7 +20,6 @@ export default class QuestionShow extends React.Component {
     componentDidMount() {
         this.props
             .fetchPost(this.props.match.params.id)
-            .then(() => console.log(this.props.votes));
     }
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.id != this.props.match.params.id) {
@@ -73,7 +72,6 @@ export default class QuestionShow extends React.Component {
     }
 
     fetchMyVote(post) {
-        console.log(this.props.votes);
         for (var i = 0; i < this.props.votes.length; i++) {
             if (
                 this.props.votes[i].post_id === post.id &&
@@ -166,7 +164,6 @@ export default class QuestionShow extends React.Component {
                 </div>
                 <div className="comment-container">
                     {this.fetchComments(post).map((comment) => {
-                        console.log(comment);
                         return (
                             <CommentItem key={comment.id} comment={comment} />
                         );

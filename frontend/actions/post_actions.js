@@ -6,9 +6,10 @@ export const RECEIVE_POST_ERRORS = "RECEIVE_POST_ERRORS";
 export const RECEIVE_ANSWER = "RECEIVE_ANSWER";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const CLEAR_ANSWERS = "CLEAR_ANSWERS";
-const receivePosts = (posts) => ({
+const receivePosts = (res) => ({
     type: RECEIVE_POSTS,
-    posts,
+    posts: res.posts,
+    tags: res.tags
 });
 
 export const clearAnswers = () => ({
@@ -42,7 +43,7 @@ export const clearErrors = () => ({
 
 export const fetchPosts = (data) => (dispatch) =>
     PostApiUtil.fetchPosts(data).then(
-        (posts) => dispatch(receivePosts(posts)),
+        (res) => dispatch(receivePosts(res)),
         (errors) => dispatch(receivePostErrors(errors))
     );
 export const fetchPost = (id) => (dispatch) =>

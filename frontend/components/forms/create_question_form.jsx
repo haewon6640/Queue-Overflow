@@ -8,6 +8,7 @@ export default class CreateQuestionForm extends React.Component {
             body: "",
             poster_id: "",
             parent_post_id: null,
+            taglist: []
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }

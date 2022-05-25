@@ -17,7 +17,7 @@
  *= require_tree .
  *= require_self
  */
-.form {
+ .form {
 
   display:flex;
   justify-content: center;
@@ -71,14 +71,14 @@
       }
       .btn-demo {
         text-transform: capitalize;
-        background-color: var(--btn-bg-blue);
+        background-color: rgb(94, 196, 191);
         color: var(--white);
         margin-top: 10px;
         display: inline-block;
         padding: 0.7em;
         width: 100%;
         &:hover {
-            background-color: var(--btn-signup-bg-blue-fill);
+            background-color: lightseagreen;
         }
       }
 

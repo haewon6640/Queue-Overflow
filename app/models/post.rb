@@ -24,6 +24,14 @@ class Post < ApplicationRecord
     has_many :voted_users,
         through: :votes,
         source: :voter
+    
+    has_many :question_tags,
+        foreign_key: :question_id,
+        class_name: :QuestionTag
+
+    has_many :tags,
+        through: :question_tags,
+        source: :tags
         
     def answer_count 
         self.answers.count

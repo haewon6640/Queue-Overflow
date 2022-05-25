@@ -35,6 +35,8 @@ export default class EditQuestionForm extends React.Component {
         title: res.post.title,
         body: res.post.body,
         poster_id: res.post.poster_id,
+        id: res.post.id,
+        parent_post_id: res.parent_post_id
       });
     });
   }
@@ -91,7 +93,7 @@ export default class EditQuestionForm extends React.Component {
                   type="text"
                   placeholder="e.g.(ajax java reactjs)"
                 />
-                <button className="btn btn-submit">Post your question</button>
+                <button className="btn btn-blue btn-submit">Post your question</button>
               </form>
             </div>
             <aside className="steps-container">

@@ -17,6 +17,7 @@ export default class QuestionIndexItem extends React.Component {
     }
     render() {
         const question = this.props.question;
+        console.log(question);
         const body = question.body.length <= 200 ?
             question.body : question.body.slice(0,200) + "..."
         return (
