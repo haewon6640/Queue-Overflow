@@ -17,6 +17,7 @@
 
  html {
   font-family: var(--ff-sans);
+  overflow-y: scroll;
 }
 .btn {
   align-self: center;
@@ -62,4 +63,9 @@ textarea:focus, input:focus {
       border-left: 1px solid rgb(214, 217, 220);
       box-sizing: border-box;
   }
+}
+
+.loading {
+  height: 2000px;
+  overflow:scroll;
 }

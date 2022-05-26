@@ -25,7 +25,8 @@ export const receivePost = (res) => ({
     post: res.post,
     answers: res.answers,
     comments: res.comments,
-    votes: res.votes
+    votes: res.votes,
+    tags: res.tags
 });
 
 const removePost = (postId) => ({

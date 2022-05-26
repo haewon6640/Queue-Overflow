@@ -25,8 +25,8 @@ const App = () => (
             <SideBarContainer/>
             <div className="body-container">
                 <Switch>
-                    <UserHomeRoute exact path="/" component={UserHome}/>
-                    <Route exact path="/questions/:id" component={QuestionShowContainer} />
+                    <UserHomeRoute exact path="/" component={QuestionIndexContainer}/>
+                    <Route exact path="/questions/view/:id" component={QuestionShowContainer} />
                     <Route exact path="/questions" component={QuestionIndexContainer}/>
                 </Switch>
             </div>

@@ -7,7 +7,7 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
 
     has_many :posts,
-        foreign_key: :post_id,
+        foreign_key: :poster_id,
         class_name: :Post
     
     has_many :comments,
@@ -25,7 +25,14 @@ class User < ApplicationRecord
     has_many :voted_posts,
         through: :votes,
         source: :post
-        
+    
+    def reputation 
+        num = 0
+        self.posts.each do |post|
+            num += post.score
+        end
+        num
+    end
     def self.find_by_credentials(email,password) 
         user = User.find_by(email: email)
         return nil unless user

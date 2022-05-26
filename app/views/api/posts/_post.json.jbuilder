@@ -4,3 +4,4 @@ json.answer_count post.answer_count
 json.comments post.comment_ids
 json.votes post.votes.count
 json.score post.score
+json.tags post.tag_ids

@@ -18,8 +18,7 @@ export default class QuestionShow extends React.Component {
     }
 
     componentDidMount() {
-        this.props
-            .fetchPost(this.props.match.params.id)
+        this.props.fetchPost(this.props.match.params.id);
     }
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.id != this.props.match.params.id) {
@@ -82,14 +81,15 @@ export default class QuestionShow extends React.Component {
         }
         return "none";
     }
+    fetchTags(question) {
+        let tags = [];
+        for (let i = 0; i < question.tags.length; i++) {
+            tags.push(this.props.tags[question.tags[i]])
+        }
+        return tags;
+    }
     render() {
         if (!this.props.question) {
-            return null;
-        }
-        if (
-            Object.values(this.props.comments).length === 0 ||
-            this.props.answers.length === 0
-        ) {
             return null;
         }
         const post = this.props.question;
@@ -104,10 +104,7 @@ export default class QuestionShow extends React.Component {
                 currUserId={this.props.currUserId}
             />
         ) : (
-            <a
-                className="add-comment"
-                onClick={() => this.setState({ show_comment_form: true })}
-            >
+            <a className="add-comment" onClick={() => this.setState({ show_comment_form: true })}>
                 Add a comment
             </a>
         );
@@ -143,9 +140,7 @@ export default class QuestionShow extends React.Component {
                             <p className="body">{post.body}</p>
                             <div className="tags-container">
                                 <ul className="tags">
-                                    <li>ruby</li>
-                                    <li>rails</li>
-                                    <li>react</li>
+                                    {this.fetchTags(post).map((tag,idx)=><li key={idx}>{tag.title}</li>)}
                                 </ul>
                             </div>
                             <div className="more-info">
@@ -163,10 +158,13 @@ export default class QuestionShow extends React.Component {
                     </div>
                 </div>
                 <div className="comment-container">
+
                     {this.fetchComments(post).map((comment) => {
-                        return (
-                            <CommentItem key={comment.id} comment={comment} />
-                        );
+                        if (comment) {
+                            return (
+                                <CommentItem key={comment.id} comment={comment} />
+                            );
+                        }
                     })}
                 </div>
                 <div className="add-comment-container">{comment}</div>

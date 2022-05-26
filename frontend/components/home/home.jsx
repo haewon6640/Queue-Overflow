@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 export default (props) => {
   const [jobIndex, setJobIndex] = useState(0);
+
   const jobs = [
     "developer",
     "game developer",
@@ -11,15 +12,13 @@ export default (props) => {
   ];
   let currIdx = 0;
 
-  // useEffect(() => {
-  //     const interval = setInterval(() => {
-  //       setJobIndex((jobIndex+1)%5);
-  //     }, 1000);
-  //     return () => clearInterval(interval);
-  //   }, []);
-  // setInterval(() => {
-  //     setJobIndex((jobIndex+1)%5);
-  //   }, 1000);
+  useEffect(() => {
+      const interval = setInterval(() => {
+        console.log(jobIndex)
+        setJobIndex((jobIndex+1)%5);
+      }, 1000);
+      return () => clearInterval(interval);
+    }, []);
   return (
     <div className="home-container">
       <div className="header-container">

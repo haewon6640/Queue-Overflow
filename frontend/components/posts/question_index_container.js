@@ -2,8 +2,9 @@ import { connect } from "react-redux";
 import { toArr,sortByNew } from "../../reducers/selectors";
 import {fetchPosts} from "../../actions/post_actions"
 import QuestionIndex from "./question_index"
-const mSTP = ({entities: {posts}}) => ({
-    questions: sortByNew(toArr(posts))
+const mSTP = ({entities: {posts,tags}}) => ({
+    questions: sortByNew(toArr(posts)),
+    tags
 })
 
 const mDTP = dispatch => ({

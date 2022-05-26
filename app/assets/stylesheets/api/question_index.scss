@@ -68,6 +68,10 @@
                 border-top-right-radius: 3px;
                 border-bottom-right-radius: 3px;
             }
+            li:not(.selected):hover {
+                background-color: rgb(248, 249, 249);
+                cursor: pointer;
+            }
         }
     }
     .questions {

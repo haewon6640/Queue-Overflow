@@ -7,6 +7,8 @@ class Api::PostsController < ApplicationController
   
     def show
       @post = Post.find_by(id: params[:id])
+      p "tagsworld"
+      p @post.tags
       @answers = Post.where(parent_post_id: params[:id]).includes(:comments)
       if @post
         render :show

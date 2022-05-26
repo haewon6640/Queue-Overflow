@@ -4,14 +4,14 @@ import { clearComments, createComment } from "../../actions/comment_actions";
 import QuestionShow from "./question_show";
 import { deleteVote,createVote, updateVote } from "../../actions/vote_actions";
 
-
 const mSTP = (state,ownProps) => ({
     question: state.entities.posts[ownProps.match.params.id],
     answers: Object.keys(state.entities.answers).map(key=> state.entities.answers[key]),
     // have to filter 
     comments: state.entities.comments,
     votes: Object.values(state.entities.votes),
-    currUserId: state.session.currentUserId
+    currUserId: state.session.currentUserId,
+    tags: state.entities.tags
 })
 
 const mDTP = dispatch => ({

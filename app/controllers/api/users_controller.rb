@@ -10,6 +10,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.includes(:posts)
+    render :index
+  end
+  
   private
   def user_params
     params.require(:user).permit(:username, :email, :password) 
