@@ -87,6 +87,7 @@
                 flex-direction: column;
                 width: 100%;
                 .body {
+                    white-space: pre-wrap;
                     font-size: 15px;
                     line-height: 22.5px;
                 }
@@ -109,16 +110,47 @@
                         }
                     }
                 }
-
-                .share {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: flex-start;
-                    gap: 6px;
-                    font-size: 13px;
-                    li,
-                    a {
-                        color: rgb(106, 115, 124);
+                .more-info {
+                    position:relative;
+                    .share {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        gap: 6px;
+                        font-size: 13px;
+                        li,
+                        a {
+                            color: rgb(106, 115, 124);
+                            cursor:pointer;
+                        }
+                    }
+                    .share-modal {
+                        position:absolute;
+                        padding: 12px;
+                        top: 20px;
+                        background-color: white;
+                        border-radius: 5px;
+                        z-index: 5;
+                        border: 1px solid rgb(214, 217, 220);
+                        box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06);
+                        div {
+                            display:flex;
+                            justify-content: space-between;
+                            p {
+                                color: rgb(12, 13, 14);
+                                font-weight: 600;
+                                font-size: 13px;
+                                padding-left: 3px;
+                                margin-bottom: 10px;
+                            }
+                            p:last-child {
+                                cursor:pointer;
+                            }
+                        }
+                        input {
+                            width: 300px;
+                            background-color: white;
+                        }
                     }
                 }
             }
@@ -139,6 +171,7 @@
             justify-content: flex-start;
             align-items: center;
             gap: 0px;
+            padding-top: 20px;
             color: rgb(106, 115, 124);
             button {
                 background: none;
@@ -174,10 +207,13 @@
             margin-top: 20px;
             width: 100%;
             .body {
+                white-space: pre-wrap;
                 font-size: 15px;
+                line-height: 22.5px;
             }
             .more-info {
                 margin-top: 20px;
+                position:relative;
                 .share {
                     display: flex;
                     flex-direction: row;
@@ -187,6 +223,35 @@
                     li,
                     a {
                         color: rgb(106, 115, 124);
+                        cursor:pointer;
+                    }
+                    .share-modal {
+                        position:absolute;
+                        padding: 12px;
+                        top: 20px;
+                        background-color: white;
+                        border-radius: 5px;
+                        z-index: 5;
+                        border: 1px solid rgb(214, 217, 220);
+                        box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06);
+                        div {
+                            display:flex;
+                            justify-content: space-between;
+                            p {
+                                color: rgb(12, 13, 14);
+                                font-weight: 600;
+                                font-size: 13px;
+                                padding-left: 3px;
+                                margin-bottom: 10px;
+                            }
+                            p:last-child {
+                                cursor:pointer;
+                            }
+                        }
+                        input {
+                            width: 300px;
+                            background-color: white;
+                        }
                     }
                 }
             }

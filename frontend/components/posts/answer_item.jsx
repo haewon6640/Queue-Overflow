@@ -7,14 +7,19 @@ export default class AnswerItem extends React.Component {
         super(props);
         this.state = {
             show_comment_form: false,
+            show_share_modal: false
         };
         this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+        this.handleShare = this.handleShare.bind(this);
     }
     handleCommentSubmit(comment) {
         this.setState({
             show_comment_form: false,
         });
         return this.props.createComment(comment);
+    }
+    handleShare(e) {
+        this.setState({show_share_modal:!this.state.show_share_modal})
     }
     render() {
         let comment = this.state.show_comment_form ? (
@@ -45,9 +50,16 @@ export default class AnswerItem extends React.Component {
                     <p className="body">{this.props.answer.body}</p>
                     <div className="more-info">
                         <ul className="share">
-                            <li>Share</li>
+                            <li onClick={this.handleShare}>Share</li>
+                            {this.state.show_share_modal &&
+                                <div className="share-modal">
+                                    <div>
+                                        <p>Share a link to this question.</p>
+                                        <p onClick={this.handleShare}>X</p>
+                                    </div>
+                                    <input type="text" className="share-link" value={window.location.href} />
+                                </div>}
                             <li>Edit</li>
-                            <li>Follow</li>
                         </ul>
                     </div>
                     <div className="comment-container">

@@ -1,5 +1,7 @@
 export const toArr = (obj) => (
-    Object.keys(obj).map(key=>obj[key])
+    Object.keys(obj).map(key=>{
+        return obj[key];
+    })
 )
 export const sortByNew = (arr) => (
     arr.sort(function(a,b) {
@@ -30,20 +32,46 @@ export const sortByHot = (arr) => (
     })
 )
 
-export const sortByUnanswered = (arr) => {
-    let res = [];
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i].answer_count === 0) {
-            res.push(arr[i]);
+export const sortByUnanswered = (arr) => (
+    arr.sort(function(a,b) {
+        if (a.answer_count > b.answer_count) {
+            return 1
+        } else {
+            return -1;
         }
-    }
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i].answer_count != 0) {
-            res.push(arr[i]);
+    })
+)
+export const sortByReputation = (arr) => (
+    arr.sort(function(a,b) {
+        if (a.reputation < b.reputation) {
+            return 1
+        } else {
+            return -1;
         }
-    }
-    return res;
-}
+    })
+)
+export const sortByContribution = (arr) => (
+    arr.sort(function(a,b) {
+        if ((a.answer_count+a.post_count) < (b.answer_count+b.post_count)) {
+            return 1
+        } else {
+            return -1;
+        }
+    })
+)
+
+export const sortTagByPopular = (arr) => (
+    arr.sort(function(a,b) {
+        if (a.tag_count < b.tag_count) {
+            return 1
+        } else {
+            return -1;
+        }
+    })
+)
+export const sortTagByName = (arr) => (
+    arr.sort((a,b)=>(a.title).localeCompare(b.title))
+)
 export const selectQuestions = ({posts}) => (
     toArr(posts).filter(post => !post.parent_post_id )
 )

@@ -2,6 +2,8 @@ class Post < ApplicationRecord
     validates :title, :body, :poster_id, presence: true
 
     belongs_to :poster, 
+        primary_key: :id,
+        foreign_key: :poster_id,
         class_name: :User
 
     belongs_to :question,
@@ -27,7 +29,8 @@ class Post < ApplicationRecord
     
     has_many :question_tags,
         foreign_key: :question_id,
-        class_name: :QuestionTag
+        class_name: :QuestionTag,
+        dependent: :destroy
 
     has_many :tags,
         through: :question_tags,
@@ -43,7 +46,7 @@ class Post < ApplicationRecord
 
     private 
     def vote_count(boolean)
-        self.votes.where(vote: boolean).pluck("COUNT(*)")[0]
+        self.votes.where(vote: boolean).count
     end
 
 

@@ -3,8 +3,9 @@ class AnswerForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: props.id,
             title: `answer_to_${props.postId}`,
-            body: "",
+            body: props.body,
             poster_id: props.currUserId,
             parent_post_id: props.postId
         }
@@ -19,7 +20,7 @@ class AnswerForm extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createAnswer(this.state).then(()=>{
+        this.props.action(this.state).then(()=>{
             this.setState({
                 body: "",
             })

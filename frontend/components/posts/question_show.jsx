@@ -11,10 +11,12 @@ export default class QuestionShow extends React.Component {
         super(props);
         this.state = {
             show_comment_form: false,
+            show_share_modal: false
         };
         this.fetchComments = this.fetchComments.bind(this);
         this.createComment = this.createComment.bind(this);
         // this.fetchMyVote = this.fetchMyVote.bind(this);
+        this.handleShare = this.handleShare.bind(this);
     }
 
     componentDidMount() {
@@ -88,6 +90,9 @@ export default class QuestionShow extends React.Component {
         }
         return tags;
     }
+    handleShare(e) {
+        this.setState({show_share_modal:!this.state.show_share_modal})
+    }
     render() {
         if (!this.props.question) {
             return null;
@@ -140,34 +145,40 @@ export default class QuestionShow extends React.Component {
                             <p className="body">{post.body}</p>
                             <div className="tags-container">
                                 <ul className="tags">
-                                    {this.fetchTags(post).map((tag,idx)=><li key={idx}>{tag.title}</li>)}
+                                    {this.fetchTags(post).map((tag,idx)=><Link to={`/questions/search?tag_title=${tag.title}`} style={{cursor:"pointer"}} key={idx}><li>{tag.title}</li></Link>)}
                                 </ul>
                             </div>
                             <div className="more-info">
                                 <ul className="share">
-                                    <li>Share</li>
+                                    <li onClick={this.handleShare}>Share</li>
+                                    {this.state.show_share_modal &&
+                                    <div className="share-modal">
+                                        <div>
+                                            <p>Share a link to this question.</p>
+                                            <p onClick={this.handleShare}>X</p>
+                                        </div>
+                                        <input type="text" className="share-link" value={window.location.href} />
+                                    </div>}
                                     <li>
                                         <Link to={`/questions/${post.id}/edit`}>
                                             Edit
                                         </Link>
                                     </li>
-                                    <li>Follow</li>
                                 </ul>
                             </div>
+                            <div className="comment-container">
+                                {this.fetchComments(post).map((comment) => {
+                                    if (comment) {
+                                        return (
+                                            <CommentItem key={comment.id} comment={comment} />
+                                        );
+                                    }
+                                })}
+                            </div>
+                            <div className="add-comment-container">{comment}</div>
                         </div>
                     </div>
                 </div>
-                <div className="comment-container">
-
-                    {this.fetchComments(post).map((comment) => {
-                        if (comment) {
-                            return (
-                                <CommentItem key={comment.id} comment={comment} />
-                            );
-                        }
-                    })}
-                </div>
-                <div className="add-comment-container">{comment}</div>
                 <div className="bottom-border"></div>
                 {this.props.answers.map((answer) => (
                     <AnswerItem

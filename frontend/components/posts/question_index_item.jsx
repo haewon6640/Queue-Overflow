@@ -15,6 +15,7 @@ export default class QuestionIndexItem extends React.Component {
             time: difference(new Date(Date.parse(this.props.question.created_at)),new Date())
         })
     }
+    
     render() {
         const question = this.props.question;
         const body = question.body.length <= 200 ?
@@ -31,7 +32,7 @@ export default class QuestionIndexItem extends React.Component {
                 <p className="question-index-item-body">{body}</p>
                 <div className="question-index-item-info">
                     <ul className="tags">
-                        {this.props.tags.map((tag,idx)=><li key={idx}>{tag.title}</li>)}
+                        {this.props.tags.map((tag,idx)=><Link to={`/questions/search?tag_title=${tag.title}`}><li key={idx}>{tag.title}</li></Link>)}
                     </ul>
                     <div className="question-index-item-info-right">
                         <Link className="asker" to={`/users/${question.poster_id}`}>{question.poster_name}</Link>

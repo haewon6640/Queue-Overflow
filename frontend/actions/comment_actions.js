@@ -23,6 +23,6 @@ export const clearComments = () => ({
 export const createComment = (comment) => (dispatch) =>
     CommentApiUtil.createComment(comment).then(
         (comment) => dispatch(receiveComment(comment)),
-        (errors) => dispatch(receiveCommentErrors(errors))
+        (errors) => dispatch(receiveCommentErrors(errors.responseJSON))
     );
 

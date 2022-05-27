@@ -49,7 +49,7 @@ export default class CreateQuestionForm extends React.Component {
     handleTagUpdate(e) {
         if (e.key === "Enter" || e.key === ",") {
             this.setState({
-                taglist: this.state.taglist.concat([this.state.tag]),
+                taglist: this.state.taglist.concat([this.state.tag.trim()]),
                 tag: "",
                 show_input: false
             });

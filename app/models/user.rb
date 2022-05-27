@@ -33,6 +33,14 @@ class User < ApplicationRecord
         end
         num
     end
+
+    def post_count
+        self.posts.where(parent_post_id: nil).count
+    end
+    def answer_count
+        self.posts.where.not(parent_post_id: nil).count
+    end
+
     def self.find_by_credentials(email,password) 
         user = User.find_by(email: email)
         return nil unless user

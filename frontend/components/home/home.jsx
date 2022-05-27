@@ -115,7 +115,7 @@ export default (props) => {
             <span className="moving-text"> {jobs[jobIndex]} </span>
             has a
             <br />
-            tab open to Flow Overstack
+            tab open to Queue Overflow
           </div>
         </div>
       </div>

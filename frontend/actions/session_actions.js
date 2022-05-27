@@ -54,5 +54,5 @@ export const signup = (user) => dispatch => (
 export const fetchUsers = (data) => dispatch => (
     SessionApiUtil.fetchUsers(data).then(users=>
         dispatch(receiveUsers(users))
-    , errors=> dispatch(receiveSessionErrors(err.responseJSON)))
+    , err=> dispatch(receiveSessionErrors(err.responseJSON)))
 )

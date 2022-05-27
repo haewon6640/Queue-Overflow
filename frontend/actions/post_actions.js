@@ -45,32 +45,37 @@ export const clearErrors = () => ({
 export const fetchPosts = (data) => (dispatch) =>
     PostApiUtil.fetchPosts(data).then(
         (res) => dispatch(receivePosts(res)),
-        (errors) => dispatch(receivePostErrors(errors))
+        (errors) => dispatch(receivePostErrors(errors.responseJSON))
     );
 export const fetchPost = (id) => (dispatch) =>
     PostApiUtil.fetchPost(id).then(
         (res) => dispatch(receivePost(res)),
-        (errors) => dispatch(receivePostErrors(errors))
+        (errors) => dispatch(receivePostErrors(errors.responseJSON))
     );
 export const createPost = (post) => (dispatch) =>
     PostApiUtil.createPost(post).then(
         (res) => dispatch(receivePost(res)),
-        (errors) => dispatch(receivePostErrors(errors))
+        (errors) => dispatch(receivePostErrors(errors.responseJSON))
     );
 export const updatePost = (post) => (dispatch) =>
     PostApiUtil.updatePost(post).then(
         (post) => dispatch(receivePost(post)),
-        (errors) => dispatch(receivePostErrors(errors))
+        (errors) => dispatch(receivePostErrors(errors.responseJSON))
+    );
+export const updateAnswer = (answer) => (dispatch) =>
+    PostApiUtil.updatePost(answer).then(
+        (post) => dispatch(receiveAnswer(post.post)),
+        (errors) => dispatch(receivePostErrors(errors.responseJSON))
     );
 
 export const deletePost = (postId) => (dispatch) =>
     PostApiUtil.deletePost(postId).then(
         (post) => dispatch(removePost(postId)),
-        (errors) => dispatch(receivePostErrors(errors))
+        (errors) => dispatch(receivePostErrors(errors.responseJSON))
     );
 
 export const createAnswer = (answer) => (dispatch) =>
     PostApiUtil.createPost(answer).then(
         (res) => dispatch(receiveAnswer(res)),
-        (errors) => dispatch(receivePostErrors(errors))
+        (errors) => dispatch(receivePostErrors(errors.responseJSON))
     );

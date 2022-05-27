@@ -1,3 +1,141 @@
 // Place all the styles related to the api::users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.user-index-container {
+    // width: 300px;
+    width: 100%;
+    padding: 24px;
+    .user-index-title {
+        font-size: 27px;
+        text-align: start;
+    }
+    .user-index-filter {
+        display: flex;
+        flex-direction: row;
+        margin-top: 30px;
+        justify-content: space-between;
+        .user-search {
+            position: relative;
+            height: fit-content;
+            .user-search-icon {
+                position:absolute;
+                right: auto;
+                left: 0.7em;
+                fill: rgb(186, 191, 196);
+                vertical-align: bottom;
+                top: 50%;
+                margin-top: -9px;
+                pointer-events: none;
+            }
+            input {
+                padding-left: 34px;
+                
+                max-width: 316px;
+                height: 100%;
+            }
+
+        }
+        .filters {
+            display:flex;
+            width: fit-content;
+            li {
+                border: 1px solid hsl(210,8%,55%);
+                color: hsl(210,8%,45%);
+                font-size: 14px;
+                padding: 0.8em;
+                padding-bottom: 0.9em;
+                line-height: calc(15/13);
+            }
+            li:not(:last-child) {
+                margin-right: -1px;
+            }
+            li:not(:first-child) {
+                border-left:none;
+            }
+            li:first-child {
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+            }
+            .selected {
+                background-color: hsl(210,8%,90%);
+                color: hsl(210,8%,25%);
+                border-color: hsl(210,8%,65%);
+            }
+            li:last-child {
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+            li:not(.selected):hover {
+                background-color: rgb(248, 249, 249);
+                cursor: pointer;
+            }
+        }
+    }
+    .user-list {
+        margin-top: 20px;
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        .user-grid-item {
+            border: 1px solid rgb(214, 217, 220);
+            border-radius: 3px;
+            padding: 15px;
+            .user-name {
+                font-size: 15px;
+                color: rgb(0, 116, 204);
+                padding-bottom: 5px;
+            }
+            .tag-name {
+                align-self: center;
+                margin-right: 2px;
+                padding: 4.8px 6px;
+                font-size: 12px;
+                color: rgb(57, 115, 157);
+                background-color: rgb(225, 236, 244);
+                border-radius: 3px;
+            }
+            .user-name:hover {
+                color: rgb(10, 149, 255);
+            }
+            .tag-list {
+                margin-top: 20px;
+            }
+            ul {
+                margin-top: 10px;
+                font-size: 12px;
+                color: rgb(106, 115, 124);
+                li:not(:last-child) {
+                    padding-bottom: 6px;
+                }
+                li:last-child {
+                    display:flex;
+                    justify-content: space-between;
+                    flex-flow: wrap row;
+                    margin: -10px 0 0 0;
+                    p:last-child {
+                        color: rgb(131, 140, 149);
+                    }
+                }
+                li:last-child > * {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+// @media (max-width: 1265px) {
+//     .user-list {
+//         grid-template-columns: repeat(3, minmax(0, 1fr));
+//     }
+// }
+// @media (max-width: 980px) {
+//     .user-list {
+//         grid-template-columns: repeat(2, minmax(0, 1fr));
+//     }
+// }
+// @media (max-width: 500px) {
+//     .user-list {
+//         grid-template-columns: repeat(1, minmax(0, 1fr));
+//     }
+// }

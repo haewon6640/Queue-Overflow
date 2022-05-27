@@ -10,7 +10,10 @@ import CreateQuestionFormContainer from "./forms/create_question_form_container"
 import EditQuestionFormContainer from "./forms/edit_question_form_container";
 import SideBarContainer from "./sidebar/sidebar_container";
 import Home from "./home/home";
-import UserHome from "./home/userHome";
+import UserIndexContainer from "./sidepages/user_index_container";
+import UserShowContainer from "./sidepages/user_show_container"
+import TagIndexContainer from "./sidepages/tag_index_container";
+import Footer from "./footer/footer";
 const App = () => (
     <div className="main-container">
         <NavBarContainer/>
@@ -26,11 +29,15 @@ const App = () => (
             <div className="body-container">
                 <Switch>
                     <UserHomeRoute exact path="/" component={QuestionIndexContainer}/>
+                    <Route exact path="/tags" component={TagIndexContainer} />
+                    <Route exact path="/users" component={UserIndexContainer} />
+                    <Route exact path="/users/:id" component={UserShowContainer} />
                     <Route exact path="/questions/view/:id" component={QuestionShowContainer} />
-                    <Route exact path="/questions" component={QuestionIndexContainer}/>
+                    <Route path="/questions" component={QuestionIndexContainer}/>
                 </Switch>
             </div>
         </div>
+        <Footer />
     </div>
 )
 export default App;
