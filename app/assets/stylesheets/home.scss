@@ -180,6 +180,7 @@
                 }
                 
             }
+            
             .moving-text-container {
                 font-family: "Roboto Slab", serif;
                 font-weight: 900;
@@ -191,20 +192,15 @@
                 white-space: nowrap;
                 .moving-text {
                     color: rgb(242, 116, 13);
-                    animation-duration: 0.5s;
-                    animation-name: slidein;
+                    position:relative;
+                    top: -30px;
+                    opacity: 0;
+                    &.move {
+                        top: 0px;
+                        opacity: 100%;
+                        transition: all 1s;
+                    }
                 }
-                @keyframes slidein {
-                    from {
-                      margin-top:-300px;
-                      width: 300%;
-                    }
-                  
-                    to {
-                      margin-top: 0%;
-                      width: 100%;
-                    }
-                  }
             }
         }
     }

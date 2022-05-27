@@ -1407,16 +1407,40 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       jobIndex = _useState2[0],
       setJobIndex = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      animation = _useState4[0],
+      setAnimation = _useState4[1];
+
   var jobs = ["developer", "game developer", "data scientist", "system admin", "mobile admin"];
   var currIdx = 0;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setJobIndex(function (ji) {
+      return (ji + 1) % 5;
+    });
+    setAnimation(true);
+    setTimeout(function () {
+      setAnimation(false);
+    }, 1950);
     var interval = setInterval(function () {
       setJobIndex(function (ji) {
         return (ji + 1) % 5;
       });
-    }, 1000);
+      setAnimation(true);
+      setTimeout(function () {
+        setAnimation(false);
+      }, 1950);
+    }, 2000); // let interval2 = "";
+    // setTimeout(function () {
+    //   interval2 = setInterval(() => {
+    //     setJobIndex((ji)=>(ji+1)%5);
+    //     setAnimation(false);
+    //   }, 1000);
+    // }, 1000);
+
     return function () {
-      return clearInterval(interval);
+      setAnimation(false);
+      clearInterval(interval); // clearInterval(interval2);
     };
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -1495,9 +1519,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     d: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
   })), " "))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "moving-text-container"
-  }, "Every", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-    className: "moving-text"
-  }, " ", jobs[jobIndex], " "), "has a", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "tab open to Queue Overflow"))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "side ".concat(animation ? "side-move" : "")
+  }, "Every"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "moving-text ".concat(animation ? "move" : "")
+  }, " ", jobs[jobIndex], " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "side ".concat(animation ? "side-move" : "")
+  }, "has a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "tab open to Queue Overflow"))));
 });
 
 /***/ }),

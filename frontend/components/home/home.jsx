@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 export default (props) => {
   const [jobIndex, setJobIndex] = useState(0);
+  const [animation, setAnimation] = useState(false);
 
   const jobs = [
     "developer",
@@ -12,11 +13,34 @@ export default (props) => {
   ];
   let currIdx = 0;
   useEffect(() => {
+      setJobIndex((ji)=>(ji+1)%5);
+      setAnimation(true);
+      setTimeout(function () {
+        setAnimation(false);
+      },1950);
       const interval = setInterval(() => {
         setJobIndex((ji)=>(ji+1)%5);
-      }, 1000);
-      return () => clearInterval(interval);
+        setAnimation(true);
+        setTimeout(function () {
+          setAnimation(false);
+        },1950);
+      }, 2000);
+      // let interval2 = "";
+      // setTimeout(function () {
+      //   interval2 = setInterval(() => {
+      //     setJobIndex((ji)=>(ji+1)%5);
+      //     setAnimation(false);
+      //   }, 1000);
+      // }, 1000);
+
+      return () => {
+        setAnimation(false);
+        clearInterval(interval);
+        // clearInterval(interval2);
+      }
     }, []);
+
+  
   return (
     <div className="home-container">
       <div className="header-container">
@@ -109,9 +133,9 @@ export default (props) => {
             </div>
           </div>
           <div className="moving-text-container">
-            Every
-            <span className="moving-text"> {jobs[jobIndex]} </span>
-            has a
+            <span className={`side ${animation ? "side-move" : ""}`}>Every</span>
+            <span className={`moving-text ${animation ? "move" : ""}`}> {jobs[jobIndex]} </span>
+            <span className={`side ${animation ? "side-move" : ""}`}>has a</span>
             <br />
             tab open to Queue Overflow
           </div>
