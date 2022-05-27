@@ -1411,8 +1411,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   var currIdx = 0;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var interval = setInterval(function () {
-      console.log(jobIndex);
-      setJobIndex((jobIndex + 1) % 5);
+      setJobIndex(function (ji) {
+        return (ji + 1) % 5;
+      });
     }, 1000);
     return function () {
       return clearInterval(interval);

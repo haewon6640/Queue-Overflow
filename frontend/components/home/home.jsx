@@ -11,11 +11,9 @@ export default (props) => {
     "mobile admin",
   ];
   let currIdx = 0;
-
   useEffect(() => {
       const interval = setInterval(() => {
-        console.log(jobIndex)
-        setJobIndex((jobIndex+1)%5);
+        setJobIndex((ji)=>(ji+1)%5);
       }, 1000);
       return () => clearInterval(interval);
     }, []);

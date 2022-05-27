@@ -4,7 +4,7 @@
     .header-container {
         padding: 48px;
         max-width: 1950px;
-        height: 2000px;
+        height: 900px;
         margin-left: auto;
         margin-right: auto;
         position:relative;                            
@@ -191,7 +191,20 @@
                 white-space: nowrap;
                 .moving-text {
                     color: rgb(242, 116, 13);
+                    animation-duration: 0.5s;
+                    animation-name: slidein;
                 }
+                @keyframes slidein {
+                    from {
+                      margin-top:-300px;
+                      width: 300%;
+                    }
+                  
+                    to {
+                      margin-top: 0%;
+                      width: 100%;
+                    }
+                  }
             }
         }
     }
