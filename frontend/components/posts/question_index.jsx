@@ -26,7 +26,6 @@ export default class QuestionIndex extends React.Component {
             .then(()=>this.setState({questions: this.props.questions}));
     }
     componentDidUpdate(prevProps) {
-        console.log(this.props.location.search);
         if (prevProps.location.search != this.props.location.search) {
             this.props.fetchPosts({parent_post_id: null})
             .then(()=>this.setState({questions: this.props.questions}));

@@ -1902,8 +1902,6 @@ var QuestionIndex = /*#__PURE__*/function (_React$Component) {
     value: function componentDidUpdate(prevProps) {
       var _this3 = this;
 
-      console.log(this.props.location.search);
-
       if (prevProps.location.search != this.props.location.search) {
         this.props.fetchPosts({
           parent_post_id: null
@@ -2180,10 +2178,9 @@ var QuestionIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "tags"
       }, this.props.tags.map(function (tag, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+          key: idx,
           to: "/questions/search?tag_title=".concat(tag.title)
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
-          key: idx
-        }, tag.title));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, tag.title));
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "question-index-item-info-right"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {

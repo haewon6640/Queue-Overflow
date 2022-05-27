@@ -8,11 +8,9 @@ end
 
 
 json.tags do
-    @posts.each do |post| 
-        post.tags.each do |tag|
-            json.set! tag.id do
-                json.extract! tag, :title
-            end
+    @tags.each do |tag| 
+        json.set! tag.id do
+            json.extract! tag,:title
         end
     end
 end

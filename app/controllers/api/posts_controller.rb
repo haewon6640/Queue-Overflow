@@ -3,10 +3,10 @@ class Api::PostsController < ApplicationController
       # params contain the filter
       if tag_params[:tag_title]
         @posts = Post.left_joins(:tags).where({"tags.title": tag_params[:tag_title]}.merge(filter_params.as_json)).includes(:poster, :answers, :votes, :tags).distinct
-
       else
         @posts = Post.where(filter_params.as_json).includes(:poster, :answers, :votes, :tags)
       end
+      @tags = Tag.all
       render :index
     end
   
