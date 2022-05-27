@@ -1611,7 +1611,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(_ref) {
   var session = _ref.session,
-      users = _ref.entities.users;
+      _ref$entities = _ref.entities,
+      users = _ref$entities.users,
+      tags = _ref$entities.tags;
   return {
     currentUser: users[session.currentUserId]
   };
