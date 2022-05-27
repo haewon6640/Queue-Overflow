@@ -11,4 +11,5 @@ class Api::QuestionTagsController < ApplicationController
   private
   def q_tag_params
     params.require(:question_tag).permit(:question_id, :tag_id)
+  end
 end
