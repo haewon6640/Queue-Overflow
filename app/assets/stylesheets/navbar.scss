@@ -10,7 +10,7 @@
 
     .nav-inner-container {
         display: flex;
-        flex-direction: row;
+        flex-flow: row nowrap;
         justify-content: space-between;
         margin-left: 30px;
         margin-right: 30px;
@@ -20,9 +20,11 @@
             margin-top: -4px;
             position:relative;
             .nav-logo {
-                margin-top: -25px;
+                position:absolute;
+                top:0px;
+                width: 180px;
                 .nav-logo-img {
-                    width: 30%;
+                    width: 100%;
                 }
             }
             .nav-items {
@@ -48,6 +50,33 @@
                 background-color: hsl(210,8%,90%);
             }
 
+        }
+        .nav-right {
+            display:flex;
+            .nav-search {
+                position: relative;
+                height: fit-content;
+                margin-right: 20px;
+                margin-top: 7px;
+                max-width: 600px;
+                .nav-search-icon {
+                    position:absolute;
+                    right: auto;
+                    left: 0.7em;
+                    fill: rgb(186, 191, 196);
+                    vertical-align: bottom;
+                    top: 50%;
+                    margin-top: -9px;
+                    pointer-events: none;
+                }
+                input {
+                    padding-left: 34px;
+                    width: 500px;
+                    max-width: 500px;
+                    height: 100%;
+                }
+    
+            }
         }
         .nav-right-login {
             display: flex;
