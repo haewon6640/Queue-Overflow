@@ -8,7 +8,6 @@ export default ({ currentUser, logout, history}) => {
     }
     const sessionLinks = () => (
         <nav className="nav-right-login">
-            <input type="text" />
             <Link className="btn btn-nav btn-login" to="/login">Log in</Link>
             <Link className="btn btn-nav btn-signup" to="/signup">Sign up</Link>
         </nav>

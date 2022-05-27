@@ -26,7 +26,7 @@ class Api::PostsController < ApplicationController
       tags.each do |tag_title|
         tag = Tag.find_by(title: tag_title)
         tag ||= Tag.new(title: tag_title)
-        if tag.save!
+        if tag.save
           question_tag = QuestionTag.where(tag_id: tag.id, question_id: question_id).limit(1)
           if question_tag.length == 0
             question_tag = QuestionTag.new(tag_id: tag.id, question_id: question_id)

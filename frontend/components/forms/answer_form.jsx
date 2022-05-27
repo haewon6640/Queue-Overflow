@@ -20,7 +20,7 @@ class AnswerForm extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        this.props.action(this.state).then(()=>{
+        this.props.createAnswer(this.state).then(()=>{
             this.setState({
                 body: "",
             })
