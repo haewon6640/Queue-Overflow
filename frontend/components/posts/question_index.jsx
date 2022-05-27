@@ -27,16 +27,23 @@ export default class QuestionIndex extends React.Component {
     }
     componentDidUpdate(prevProps) {
         if (prevProps.location.search != this.props.location.search) {
-            this.props.fetchPosts({parent_post_id: null})
-            .then(()=> {
-                let search = this.props.location.search;
-                search = search.slice(1).split("=");
-                let formType = `Questions tagged [${search[1].replace("%20"," ")}]`
-                this.setState({
-                    questions: this.props.questions,
-                    formType
-                })
-            });
+            if (this.props.location.search === "") {
+                console.log("index");
+                this.props.fetchPosts({parent_post_id: null})
+                    .then(()=> this.setState({questions: this.props.questions, formType: "All Questions"}))
+                return;
+            } else {
+                this.props.fetchPosts({parent_post_id: null})
+                .then(()=> {
+                    let search = this.props.location.search;
+                    search = search.slice(1).split("=");
+                    let formType = `Questions tagged [${search[1].replace("%20"," ")}]`
+                    this.setState({
+                        questions: this.props.questions,
+                        formType
+                    })
+                });
+            }
         }
     }
     fetchTags(question) {

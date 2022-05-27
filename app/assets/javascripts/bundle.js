@@ -1945,18 +1945,31 @@ var QuestionIndex = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       if (prevProps.location.search != this.props.location.search) {
-        this.props.fetchPosts({
-          parent_post_id: null
-        }).then(function () {
-          var search = _this3.props.location.search;
-          search = search.slice(1).split("=");
-          var formType = "Questions tagged [".concat(search[1].replace("%20", " "), "]");
-
-          _this3.setState({
-            questions: _this3.props.questions,
-            formType: formType
+        if (this.props.location.search === "") {
+          console.log("index");
+          this.props.fetchPosts({
+            parent_post_id: null
+          }).then(function () {
+            return _this3.setState({
+              questions: _this3.props.questions,
+              formType: "All Questions"
+            });
           });
-        });
+          return;
+        } else {
+          this.props.fetchPosts({
+            parent_post_id: null
+          }).then(function () {
+            var search = _this3.props.location.search;
+            search = search.slice(1).split("=");
+            var formType = "Questions tagged [".concat(search[1].replace("%20", " "), "]");
+
+            _this3.setState({
+              questions: _this3.props.questions,
+              formType: formType
+            });
+          });
+        }
       }
     }
   }, {
