@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {SiRedux} from "react-icons/si"
+import {DiRuby, DiPostgresql, DiReact} from "react-icons/di";
+
 export default (props) => {
   const [jobIndex, setJobIndex] = useState(0);
   const [animation, setAnimation] = useState(false);
@@ -139,7 +142,27 @@ export default (props) => {
             <br />
             tab open to Queue Overflow
           </div>
-          <div className="curve-header">asdf</div>
+          <div className="technologies">        
+            <div className="dash-br"></div>
+            <div className="tech-used">
+              <div className="react">
+                <DiReact size={150}/>
+                <p>React</p>
+              </div>
+              <div className="redux">
+                <SiRedux size={110}/>
+                <p>Redux</p>
+              </div>
+              <div className="rails">
+                <DiRuby size={110}/>
+                <p>Ruby on Rails</p>
+              </div>
+              <div className="postgresql">
+                <DiPostgresql size={500}/>
+                <p>PostgreSQL</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

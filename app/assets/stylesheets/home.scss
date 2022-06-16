@@ -4,7 +4,7 @@
     .header-container {
         padding: 48px;
         max-width: 1950px;
-        height: 900px;
+        height: 1000px;
         margin-left: auto;
         margin-right: auto;
         position:relative;                            
@@ -200,16 +200,48 @@
                     }
                 }
             }
-            .curve-header {
-                z-index: 2;
-                background-color: #F7F8F8;
-                position: absolute;
-                bottom: 210px;
-                width: 1513px;
-                height: 260px;
-                border-radius: 50%;
-                margin-bottom: 359px;
-                left: -12px;
+        }
+    }
+}
+.technologies {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    .dash-br {
+        width: 64px;
+        height: 8px;
+        background-color: #6a737c;
+        border-radius: 1000px;
+        margin-bottom: 16px;
+    }
+    .tech-used {
+        display:flex;
+        justify-content: center;
+        width: 948px;
+        margin-top: 27px;
+        padding-bottom: 16px;
+        > * {
+            width: 231px;
+            padding-bottom: 128px;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            svg {
+                height: 150px;
+                fill: rgb(244, 130, 37)
+            }
+            p {
+                color: #f8f9f9;
+                font-family: "Roboto Slab";
+                font-weight: 500;
+                font-size: 24px;
+                text-align: center;
+                margin-top: 10px;
+            }
+        }
+        :nth-child(n+3) {
+            svg {
+                fill: #b1b1b1;
             }
         }
     }

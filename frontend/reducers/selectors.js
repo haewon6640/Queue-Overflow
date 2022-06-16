@@ -3,7 +3,15 @@ export const toArr = (obj) => (
         return obj[key];
     })
 )
-
+export const sortByNew = (arr) => (
+    arr.sort(function(a,b) {
+        if (a.created_at > b.created_at) {
+            return -1
+        } else {
+            return 1;
+        }
+    })
+)
 export const sortByOld = (arr) => (
     arr.sort(function(a,b) {
         if (a.created_at > b.created_at) {
@@ -13,6 +21,7 @@ export const sortByOld = (arr) => (
         }
     })
 )
+
 
 export const sortByHot = (arr) => (
     arr.sort(function(a,b) {

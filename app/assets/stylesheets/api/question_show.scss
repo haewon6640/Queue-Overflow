@@ -24,6 +24,15 @@
                 box-shadow: rgba(255, 255, 255, 0.4) 0px 1px 0px 0px inset;
             }
         }
+        .asker {
+            font-size: 13px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
         .stats {
             display: flex;
             justify-content: flex-start;
@@ -111,7 +120,10 @@
                     }
                 }
                 .more-info {
-                    position:relative;
+                    position: relative;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
                     .share {
                         display: flex;
                         flex-direction: row;
@@ -121,20 +133,24 @@
                         li,
                         a {
                             color: rgb(106, 115, 124);
-                            cursor:pointer;
+                            cursor: pointer;
+                            &:hover {
+                                color:black;
+                            }
                         }
                     }
                     .share-modal {
-                        position:absolute;
+                        position: absolute;
                         padding: 12px;
                         top: 20px;
                         background-color: white;
                         border-radius: 5px;
                         z-index: 5;
                         border: 1px solid rgb(214, 217, 220);
-                        box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06);
+                        box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 3px 0px,
+                            rgba(0, 0, 0, 0.06);
                         div {
-                            display:flex;
+                            display: flex;
                             justify-content: space-between;
                             p {
                                 color: rgb(12, 13, 14);
@@ -144,12 +160,22 @@
                                 margin-bottom: 10px;
                             }
                             p:last-child {
-                                cursor:pointer;
+                                cursor: pointer;
                             }
                         }
                         input {
                             width: 300px;
                             background-color: white;
+                        }
+                    }
+                    .exact-date {
+                        font-size:13px;
+                        padding: 10px;
+                        border-radius: 3px;
+                        background-color: rgb(247, 171, 109);
+                        :first-child {
+                            color: #2f3236;
+                            margin-bottom: 8px;
                         }
                     }
                 }
@@ -160,6 +186,11 @@
         margin-top: 30px;
         width: 100%;
         border-bottom: 1px solid rgb(227, 230, 232);
+    }
+    .answer-count {
+        font-size: 19px;
+        margin-top: 30px;
+        margin-bottom: 5px;
     }
     .answer-vote-container {
         display: flex;
@@ -213,7 +244,7 @@
             }
             .more-info {
                 margin-top: 20px;
-                position:relative;
+                position: relative;
                 .share {
                     display: flex;
                     flex-direction: row;
@@ -223,19 +254,20 @@
                     li,
                     a {
                         color: rgb(106, 115, 124);
-                        cursor:pointer;
+                        cursor: pointer;
                     }
                     .share-modal {
-                        position:absolute;
+                        position: absolute;
                         padding: 12px;
                         top: 20px;
                         background-color: white;
                         border-radius: 5px;
                         z-index: 5;
                         border: 1px solid rgb(214, 217, 220);
-                        box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06);
+                        box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 3px 0px,
+                            rgba(0, 0, 0, 0.06);
                         div {
-                            display:flex;
+                            display: flex;
                             justify-content: space-between;
                             p {
                                 color: rgb(12, 13, 14);
@@ -245,7 +277,7 @@
                                 margin-bottom: 10px;
                             }
                             p:last-child {
-                                cursor:pointer;
+                                cursor: pointer;
                             }
                         }
                         input {
@@ -273,5 +305,12 @@
             margin-top: 26px;
             margin-bottom: 15px;
         }
+    }
+}
+
+.asker-highlight {
+    color: rgb(0, 116, 204);
+    &:hover {
+        color: rgb(10, 149, 255);
     }
 }

@@ -124,6 +124,9 @@ export default class QuestionShow extends React.Component {
                             </button>
                         </Link>
                     </div>
+                    <div className="asker">
+                        By <Link to={`/users/${post.poster_id}`}><span className="asker-highlight"> {post.poster_name}</span></Link>
+                    </div>
                     <ul className="stats">
                         <li>
                             Asked <span>{create_ago}</span>
@@ -159,12 +162,23 @@ export default class QuestionShow extends React.Component {
                                         </div>
                                         <input type="text" className="share-link" value={window.location.href} />
                                     </div>}
-                                    <li>
-                                        <Link to={`/questions/${post.id}/edit`}>
-                                            Edit
-                                        </Link>
-                                    </li>
+                                    { this.props.currUserId === post.poster_id &&
+                                            <li>
+                                                <Link to={`/questions/${post.id}/edit`}>
+                                                    Edit
+                                                </Link>
+                                            </li>
+                                    }
+                                    { this.props.currUserId === post.poster_id &&
+                                            <li onClick={()=>this.props.deletePost(post.id).then(()=> this.props.history.push("/questions"))}>
+                                                Delete
+                                            </li>
+                                    }
                                 </ul>
+                                <div className="exact-date">
+                                    <div>asked on {new Date(Date.parse(post.created_at)).toISOString().slice(0,10)}</div>
+                                    <Link to={`/users/${post.poster_id}`} className="asker-highlight">{post.poster_name}</Link>
+                                </div>
                             </div>
                             <div className="comment-container">
                                 {this.fetchComments(post).map((comment) => {
@@ -179,6 +193,7 @@ export default class QuestionShow extends React.Component {
                         </div>
                     </div>
                 </div>
+                <div className="answer-count">{post.answer_count} Answers</div>
                 <div className="bottom-border"></div>
                 {this.props.answers.map((answer) => (
                     <AnswerItem

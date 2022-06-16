@@ -13,7 +13,8 @@ class Post < ApplicationRecord
 
     has_many :answers,
         foreign_key: :parent_post_id,
-        class_name: :Post
+        class_name: :Post,
+        dependent: :destroy
 
     has_many :comments,
         foreign_key: :post_id,

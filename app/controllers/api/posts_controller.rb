@@ -60,7 +60,7 @@ class Api::PostsController < ApplicationController
     def destroy
       @post = Post.find_by(id: params[:id])
       if @post && @post.destroy
-        render :show
+        render json: ["post-deleted"]
       else
         render json: ['Could not delete post successfully.'], status: 422
       end

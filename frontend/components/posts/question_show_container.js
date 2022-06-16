@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchPost,createAnswer, receivePost, clearAnswers } from "../../actions/post_actions";
+import { fetchPost,createAnswer, receivePost, clearAnswers, deletePost } from "../../actions/post_actions";
 import { clearComments, createComment } from "../../actions/comment_actions";
 import QuestionShow from "./question_show";
 import { deleteVote,createVote, updateVote } from "../../actions/vote_actions";
@@ -16,6 +16,7 @@ const mSTP = (state,ownProps) => ({
 
 const mDTP = dispatch => ({
     fetchPost: (postId) => dispatch(fetchPost(postId)),
+    deletePost: (postId) => dispatch(deletePost(postId)),
     createAnswer: (answer) => dispatch(createAnswer(answer)),
     createComment: (comment) => dispatch(createComment(comment)),
     createVote: (vote) => dispatch(createVote(vote)),
