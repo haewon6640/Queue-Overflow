@@ -11,13 +11,10 @@
         font-family: 'Source Sans Pro',sans-serif;
         box-sizing: border-box;
         .header {
-            
             border-radius: 7px;
             height: 100%;
             padding: 32px;
             padding-bottom: 128px;
-
-            clip-path: url("https://stackoverflow.com/#curve");
             background-image: linear-gradient(rgb(35, 38, 41) 0%, rgb(82, 89, 96) 130%);
             .speech-box-container {
                 display:flex;
@@ -156,6 +153,7 @@
                                 display:flex;
                                 align-items: center;
                                 gap: 3px;
+                                color: white;
                                 svg {
                                     fill: white;
                                 }
@@ -201,6 +199,17 @@
                         transition: all 1s;
                     }
                 }
+            }
+            .curve-header {
+                z-index: 2;
+                background-color: #F7F8F8;
+                position: absolute;
+                bottom: 210px;
+                width: 1513px;
+                height: 260px;
+                border-radius: 50%;
+                margin-bottom: 359px;
+                left: -12px;
             }
         }
     }

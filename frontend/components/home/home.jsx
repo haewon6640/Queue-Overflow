@@ -139,6 +139,7 @@ export default (props) => {
             <br />
             tab open to Queue Overflow
           </div>
+          <div className="curve-header">asdf</div>
         </div>
       </div>
     </div>
