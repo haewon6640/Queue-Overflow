@@ -1,29 +1,12 @@
-<<<<<<< HEAD
-# Queue-Overflow
-=======
-# Queue Overflow
->>>>>>> 0b3607f397328def8f277ff7106c9cfab5b87eb2
+# Welcome To Queue Overflow
+Queue Overflow, a clone of Stack Overflow, is a full-stack web application that replicates the primary features of **_stackoverflow.com_**. Users can search, filter, tag, ask, and answer questions as well as add extra comments to the questions and answers. Users can upvote or downvote questions and answers, which leads to a boost in the related user's "reputation" point system.
+
 [Live Link](https://flow-over-stack-3000.herokuapp.com/)
-## MVP Items
-### Feature 1: Questions - CRUD
+<!-- ![](delivDemo.gif) -->
+## Technologies Used
 
-  Users are able to create, read, update, and delete their questions.
-  
-### Feature 2: Answers - CRUD
+## Features
+### Questions Search and Filter
+Users can find questions through the use of either the search bar, tags, user page, or filters on the questions index page. Users can view, sort, and search through all of the tags to find the relevant questions.
 
-  Users are able to write, read, update, and delete replies to questions.
-  
-### Feature 3: Search 
-
-  Implement Sequential Search algorithm for looking through questions. 
-  Bonus: Integrate Algolia Search API with the database to create a more robust search.
-  
-### Feature 4: Up/Down Vote Answers, Save Questions - CRUD
-
-  User can vote on questions and replies, as well as have a directory in their profile for any saved posts.
-  
-### BONUS
-Question Categories\
-Comment on Questions/Answers\
-Polymorphic Up/Down Votes: Questions, Answers Comments\
-Code Snippets in Questions and Answers
+### Polymorphic Upvote/Downvote
