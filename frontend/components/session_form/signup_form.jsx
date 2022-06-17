@@ -23,10 +23,11 @@ class SignupForm extends React.Component {
 
   handleDemoLogin(e) {
     e.preventDefault();
-    const user = {username: "DemoUser", email: "demouser@gmail.com",password:"123456"};
-    this.props.processForm(user)
+    const user = {email: "demouser@gmail.com",password:"123456"};
+    this.props.demoLogin(user)
       .then(()=>this.props.history.push("/"));
   }
+  
 
   handleSubmit(e) {
     e.preventDefault();
