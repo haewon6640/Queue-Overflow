@@ -13,7 +13,7 @@ Queue Overflow, a clone of Stack Overflow, is a full-stack web application that 
 * upvote/downvote questions and answers
 * search for specific questions
 
-![]([https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif](https://github.com/haewon6640/Queue-Overflow/blob/main/readme/queue_overflow.gif))
+![](https://github.com/haewon6640/Queue-Overflow/blob/main/readme/queue_overflow.gif)
 ## Technologies Used
 * React
 * Redux
@@ -25,6 +25,9 @@ Queue Overflow, a clone of Stack Overflow, is a full-stack web application that 
 ## Features
 ### Questions Search and Filter
 Users can find questions through the use of either the search bar, tags, user page, or filters on the questions index page. Users can view, sort, and search through all of the tags to find the relevant questions.
+
+### CRUD (Create, Read, Update, Delete) on Questions, Answers, Votes
+Users can perform all CRUD functions for the posted questions, answers, and votes.\
 
 ### Polymorphic Upvote/Downvote
 Users can upvote or downvote questions and answers, which leads to a boost in the related user's "reputation" point system with similar algorithm to Stack Overflow's reputation system.
