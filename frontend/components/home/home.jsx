@@ -28,13 +28,6 @@ export default (props) => {
           setAnimation(false);
         },1950);
       }, 2000);
-      // let interval2 = "";
-      // setTimeout(function () {
-      //   interval2 = setInterval(() => {
-      //     setJobIndex((ji)=>(ji+1)%5);
-      //     setAnimation(false);
-      //   }, 1000);
-      // }, 1000);
 
       return () => {
         setAnimation(false);
